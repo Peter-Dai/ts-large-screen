@@ -29,7 +29,7 @@ export default {
 .today-main {
   /* height: 100%;
   width: 100%; */
-  background-color: blue;
+  background-color:#060246 ;
   padding: 0;
 }
 
