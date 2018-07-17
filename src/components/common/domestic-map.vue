@@ -295,7 +295,7 @@ export default {
     this.autoShowTooltip(myChart);
 
     window.onresize = () => {
-      resizeWorldMapContainer();
+      resizeWorldMapContainer(this.$refs.domesticMap);
       myChart.resize();
     };
   },
