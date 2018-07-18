@@ -25,7 +25,7 @@ export default {
         },
       },
       grid: [{
-        width: '100%',
+        width: '90%',
         height: '80%',
         x: 5,
         y: 35,
@@ -64,11 +64,12 @@ export default {
         {
           name: '最近30天交易额',
           type: 'bar',
-          label: {
+          label: { // 图形上数据信息
             normal: {
-              position: 'right',
+              position: ['280', '-5'], // 图形上数据信息的位置
               show: true,
               color: '#fff',
+              formatter: '{c}万元', // 图形上数据信息格式化
             },
           },
           itemStyle: {
@@ -82,12 +83,6 @@ export default {
       ],
     };
     myChart.setOption(option);
-
-    // window.onresize = () => {
-    //   // 重置容器高宽
-    //   resizeWorldMapContainer();
-    //   myChart.resize();
-    // };
   },
 };
 </script>

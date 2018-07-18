@@ -15,7 +15,7 @@ export default {
   mounted() {
     const myChart = this.$echarts.init(this.$refs.doughnutPie);
     const option = {
-      title: [
+      title: [ // 设置两个title
         {
           text: '支付方式',
           x: '19%',
@@ -49,11 +49,12 @@ export default {
             normal: {
               label: { // 引导线文字样式
                 show: true,
-                fontSize: '10',
+                fontSize: '7',
+                formatter: '{b} {d}%', // 格式化引导线文字样式
               },
               labelLine: { // 引导线样式
                 show: true,
-                length: 5,
+                length: 4, // 引导线长度控制
               },
             },
           },
@@ -73,11 +74,12 @@ export default {
             normal: {
               label: { // 引导线文字样式
                 show: true,
-                fontSize: '10',
+                fontSize: '7',
+                formatter: '{b} {d}%', // 格式化引导线文字样式
               },
               labelLine: { // 引导线样式
                 show: true,
-                length: 5,
+                length: 4, // 引导线长度控制
               },
             },
           },
