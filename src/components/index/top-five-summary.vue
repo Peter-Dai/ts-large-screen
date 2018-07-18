@@ -14,18 +14,18 @@
     <el-header
       height="22%"
       class="top-header">
-      饼图
+      <doughnutPie/>
     </el-header>
   </el-container>
 </template>
 
 <script>
 import HistogramBar from '../common/histogram-bar';
-// import DoughnutPie from '../common/doughnut-pie';
+import DoughnutPie from '../common/doughnut-pie';
 
 export default {
   name: 'TopFiveSummary',
-  components: { HistogramBar },
+  components: { DoughnutPie, HistogramBar },
   data() {
     return {
       msg: '',
