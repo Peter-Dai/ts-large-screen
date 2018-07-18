@@ -52,7 +52,7 @@ export default {
 }
 
 .main {
-  background-color: yellow;
+  background-color: #060246;
 }
 
 .right-aside {

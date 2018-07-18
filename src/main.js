@@ -2,12 +2,17 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import ElementUI from 'element-ui';
+
+// add mockjs
+import '@/mock/mock';
+
 import 'element-ui/lib/theme-chalk/index.css';
 
 import echarts from 'echarts';
 
 import App from './App';
 import router from './router';
+import './directives';
 
 
 // import ElementUI style
