@@ -6,4 +6,12 @@ const service = axios.create({
   timeout: 15000, // 请求超时时间
 });
 
+service.interceptors.request.use(config => config, (err) => {
+  Promise.reject(err);
+});
+
+service.interceptors.response.use(response => response.data, (err) => {
+  Promise.reject(err);
+});
+
 export default service;
