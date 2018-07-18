@@ -95,6 +95,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .histogramBar {
+  padding-top: 6px;
   width: 100%;
   height: 100%;
   line-height: 100%;

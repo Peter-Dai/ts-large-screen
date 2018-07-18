@@ -6,13 +6,22 @@
       class="top-header">
       <histogramBar/>
     </el-header>
-    <!--<el-main>main</el-main>-->
-    <!--<el-footer style="height: 30%">footer</el-footer>-->
+    <el-header
+      height="35%"
+      class="top-header">
+      <histogramBar/>
+    </el-header>
+    <el-header
+      height="22%"
+      class="top-header">
+      饼图
+    </el-header>
   </el-container>
 </template>
 
 <script>
 import HistogramBar from '../common/histogram-bar';
+// import DoughnutPie from '../common/doughnut-pie';
 
 export default {
   name: 'TopFiveSummary',
@@ -29,10 +38,16 @@ export default {
 <style scoped>
 .top-container {
   height: 100%;
+  padding-left: 6%;
+  padding-top: 10px;
 }
 
 .top-header {
-  margin-top: 10px;
+  margin-bottom: 10px;
   background: #081249;
+}
+
+.top-header:last-child {
+  padding: 0;
 }
 </style>

@@ -48,7 +48,7 @@ export default {
 }
 
 .left-aside {
-  background-color: red;
+  background-color: #080b37;
 }
 
 .main {
