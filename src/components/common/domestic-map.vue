@@ -6,11 +6,9 @@
 </template>
 
 <script>
-
 import 'echarts/map/js/china';
 
 import transactionApi from '@/api/transaction';
-
 
 export default {
   name: 'DomesticMap',
@@ -119,16 +117,32 @@ export default {
     myChart.setOption(option);
     myChart.showLoading();
 
-    transactionApi.retrieveDailyTransaction().then((data) => {
+    transactionApi.retrieveDailyTransaction().then((responce) => {
       // const data1 = data;
       // console.log(data1);
 
+      const ignore = {
+        name: '南海诸岛',
+        value: 0,
+        itemStyle: {
+          normal: {
+            opacity: 0,
+            label: { show: false },
+          },
+        },
+      };
+
+      responce.push(ignore);
+
       myChart.hideLoading(); // 隐藏加载动画
-      myChart.setOption({ // 加载数据图表
-        series: [{
-          // 根据名字对应到相应的系列
-          data,
-        }],
+      myChart.setOption({
+        // 加载数据图表
+        series: [
+          {
+            // 根据名字对应到相应的系列
+            data: responce,
+          },
+        ],
       });
     });
 
