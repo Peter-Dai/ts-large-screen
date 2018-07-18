@@ -48,6 +48,6 @@ export default {
 }
 
 .top-header:last-child {
-  padding: 0;
+  padding: 0 2%;
 }
 </style>
