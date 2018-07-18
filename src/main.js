@@ -8,7 +8,7 @@ import echarts from 'echarts';
 
 import App from './App';
 import router from './router';
-
+import './directives';
 
 // import ElementUI style
 

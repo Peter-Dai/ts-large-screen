@@ -1,7 +1,8 @@
 <template>
   <div
     ref="domesticMap"
-    class="domesticMap">domestic-map</div>
+    class="domesticMap"
+    v-resize-container>domestic-map</div>
 </template>
 
 <script>
@@ -42,13 +43,14 @@ export default {
     },
   },
   mounted() {
-    const resizeWorldMapContainer = (elem) => {
-      const targetELem = elem;
-      targetELem.style.width = `${targetELem.parentElement.clientWidth}px`;
-      targetELem.style.height = `${targetELem.parentElement.clientHeight}px`;
-    };
-    // 设置容器高宽
-    resizeWorldMapContainer(this.$refs.domesticMap);
+    console.log('==================start mounted======================');
+    // const resizeWorldMapContainer = (elem) => {
+    //   const targetELem = elem;
+    //   targetELem.style.width = `${targetELem.parentElement.clientWidth}px`;
+    //   targetELem.style.height = `${targetELem.parentElement.clientHeight}px`;
+    // };
+    // // 设置容器高宽
+    // resizeWorldMapContainer(this.$refs.domesticMap);
 
     const myChart = this.$echarts.init(this.$refs.domesticMap);
 
@@ -107,8 +109,8 @@ export default {
           data: [
             {
               name: '浙江',
-              amount: '1231321',
-              orders: '12321321',
+              amount: '12313asdfdsfsdf21',
+              orders: 'sadfdsfsdfsafas',
             },
             {
               name: '安徽',
@@ -272,7 +274,7 @@ export default {
             },
             {
               name: '澳门',
-              amount: '1231321',
+              amount: 'reoiureoiueiutr',
               orders: '12321321',
             },
             {
@@ -294,10 +296,12 @@ export default {
 
     this.autoShowTooltip(myChart);
 
-    window.onresize = () => {
-      resizeWorldMapContainer(this.$refs.domesticMap);
+    window.addEventListener('resize', () => {
+      console.log('this is component resize');
       myChart.resize();
-    };
+    });
+
+    console.log('==================end mounted======================');
   },
 };
 </script>
