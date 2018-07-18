@@ -50,12 +50,19 @@ export default {
   name: 'TodayTransactionSummary',
   data() {
     return {
-      counts: '1232132132',
-      amounts: '234234324324',
+      counts: '1',
+      amounts: '2',
     };
   },
   components: {
     DomesticMap,
+  },
+
+  mounted() {
+    setInterval(() => {
+      this.counts = `${+this.counts + 1}`;
+      this.amounts = `${+this.amounts + 1}`;
+    }, 300);
   },
   methods: {
     renderCountArray() {
