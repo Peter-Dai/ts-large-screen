@@ -5,22 +5,19 @@ const httpService = axios.create({
   timeout: 20000,
 });
 
-httpService.interceptors.request.use((config) => {
+httpService.interceptors.request.use(config =>
   // helper.showLoading();
   // config.headers['X-Token'] = anthService.getToken()
-  console.log(12);
-  return config;
-}, (err) => {
+  config
+  , (err) => {
   // helper.closeLoading();
   Promise.reject(err);
 });
 
-httpService.interceptors.response.use((response) => {
-  console.log('false');
+httpService.interceptors.response.use(response =>
   // helper.closeLoading();
-  return response.data;
-}, (err) => {
-  console.log('false');
+  response.data
+  , (err) => {
   // helper.closeLoading();
   Promise.reject(err);
 });

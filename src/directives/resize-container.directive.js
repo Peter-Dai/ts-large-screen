@@ -1,13 +1,7 @@
 import Vue from 'vue';
 
 Vue.directive('resize-container', {
-  inserted(el, binding, vnode, oldVnode) {
-    console.log('==================inserted======================');
-    console.log(el);
-    console.log(binding);
-    console.log(vnode);
-    console.log(oldVnode);
-
+  inserted(el) {
     const resizeChartContainer = (elem) => {
       const targetELem = elem;
       targetELem.style.width = `${targetELem.parentElement.clientWidth}px`;
@@ -23,7 +17,6 @@ Vue.directive('resize-container', {
     // };
 
     window.addEventListener('resize', () => {
-      console.log('this is directive');
       resizeChartContainer(el);
     });
   },
