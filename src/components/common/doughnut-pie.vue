@@ -52,7 +52,7 @@ export default {
             normal: {
               label: { // 引导线文字样式
                 show: true,
-                fontSize: '7',
+                fontSize: '60%',
                 formatter: '{b} {d}%', // 格式化引导线文字样式
               },
               labelLine: { // 引导线样式
@@ -77,7 +77,7 @@ export default {
             normal: {
               label: { // 引导线文字样式
                 show: true,
-                fontSize: '7',
+                fontSize: '60%',
                 formatter: '{b} {d}%', // 格式化引导线文字样式
               },
               labelLine: { // 引导线样式
