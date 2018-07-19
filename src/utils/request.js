@@ -1,17 +1,28 @@
 import axios from 'axios';
 
-// 创建axios实例
-const service = axios.create({
-  baseURL: process.env.BASE_API, // api的base_url
-  timeout: 15000, // 请求超时时间
+const httpService = axios.create({
+  baseURL: '',
+  timeout: 20000,
 });
 
-service.interceptors.request.use(config => config, (err) => {
+httpService.interceptors.request.use((config) => {
+  // helper.showLoading();
+  // config.headers['X-Token'] = anthService.getToken()
+  console.log(12);
+  return config;
+}, (err) => {
+  // helper.closeLoading();
   Promise.reject(err);
 });
 
-service.interceptors.response.use(response => response.data, (err) => {
+httpService.interceptors.response.use((response) => {
+  console.log('false');
+  // helper.closeLoading();
+  return response.data;
+}, (err) => {
+  console.log('false');
+  // helper.closeLoading();
   Promise.reject(err);
 });
 
-export default service;
+export default httpService;
