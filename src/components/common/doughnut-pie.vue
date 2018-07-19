@@ -1,7 +1,10 @@
 <template>
   <div
     ref="doughnutPie"
-    class="doughnutPie">doughnut-pie</div>
+    class="doughnutPie"
+    resize-container>
+    doughnut-pie
+  </div>
 </template>
 
 <script>
@@ -95,6 +98,10 @@ export default {
       ],
     };
     myChart.setOption(option);
+
+    window.addEventListener('resize', () => {
+      myChart.resize();
+    });
   },
 };
 </script>

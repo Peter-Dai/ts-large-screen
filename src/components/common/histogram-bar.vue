@@ -1,7 +1,8 @@
 <template>
   <div
     ref="histogramBar"
-    class="histogramBar">
+    class="histogramBar"
+    resize-container>
     histogramBar
   </div>
 </template>
@@ -83,6 +84,10 @@ export default {
       ],
     };
     myChart.setOption(option);
+
+    window.addEventListener('resize', () => {
+      myChart.resize();
+    });
   },
 };
 </script>
