@@ -144,6 +144,8 @@ export default {
           },
         ],
       });
+    }, (err) => {
+      console.log(err);
     });
 
     this.autoShowTooltip(myChart);
