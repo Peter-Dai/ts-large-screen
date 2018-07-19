@@ -17,7 +17,6 @@ export default {
   },
   mounted() {
     const myChart = this.$echarts.init(this.$refs.histogramBar);
-
     const option = {
       title: {
         text: '最近30天交易额 TOP 5 城市',
@@ -67,7 +66,7 @@ export default {
           type: 'bar',
           label: { // 图形上数据信息
             normal: {
-              position: ['280', '-5'], // 图形上数据信息的位置
+              position: [this.$refs.histogramBar.clientWidth - 102, '-5'], // 图形上数据信息的位置
               show: true,
               color: '#fff',
               formatter: '{c}万元', // 图形上数据信息格式化
@@ -84,8 +83,10 @@ export default {
       ],
     };
     myChart.setOption(option);
-
     window.addEventListener('resize', () => {
+      const currentClientwidth = this.$refs.histogramBar.clientWidth - 102;
+      option.series[0].label.normal.position = [currentClientwidth, -5];
+      myChart.setOption(option);
       myChart.resize();
     });
   },
