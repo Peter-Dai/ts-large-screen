@@ -38,6 +38,22 @@ export default {
       msg: '',
     };
   },
+  // mounted() {
+  //   const currentClientwidth = document.documentElement.clientWidth;
+  //   console.log(`width------${currentClientwidth}`);
+  //   console.log(`height------${(currentClientwidth * 9) / 64}`);
+  //   this.$el.style.width = `${currentClientwidth}px`;
+  //   this.$el.style.height = `${(currentClientwidth * 9) / 64}px`;
+
+
+  //   window.addEventListener('resize', () => {
+  //     const currentClientwidth1 = document.documentElement.clientWidth;
+  //     console.log(`width------${currentClientwidth1}`);
+  //     console.log(`height------${(currentClientwidth1 * 9) / 64}`);
+  //     this.$el.style.width = `${currentClientwidth}px`;
+  //     this.$el.style.height = `${(currentClientwidth * 9) / 64}px`;
+  //   });
+  // },
 };
 </script>
 

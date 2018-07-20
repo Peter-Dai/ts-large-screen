@@ -1,8 +1,8 @@
 <template>
   <div
-    v-resize-container
     ref="areaLine"
-    class="areaLine">area-line</div>
+    class="areaLine"
+    resize-container>area-line</div>
 </template>
 
 <script>

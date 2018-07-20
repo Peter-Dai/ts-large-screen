@@ -1,46 +1,53 @@
 <template>
   <el-container
     class="month-container">
-    <div style="text-align:left">
+    <el-header
+      style="text-align:left"
+      height="3%">
       最近30天实时数据
-    </div>
+    </el-header>
     <!-- <el-header
       height="22%"
       class="month-header"
       style="text-align:left; font-size:12px"> -->
-    <el-row
-      :gutter="24"
-      height="22%"
+    <el-header
+      class="month-header"
+      height="20%"
       style="text-align:left; font-size:12px;margin-top:10px; margin-bottom:10px; height:'22%'">
-      <el-col
-        :span="8"
+      <el-row
+        :gutter="24"
       >
-        <el-card
-          class="summary-body"
-          body-style="padding: 10px;">
-          <div class ="title">交易额</div>
-          <div class ="content">￥122,123,123,213</div>
-        </el-card>
-      </el-col>
-      <el-col
-        :span="8"
-      >
-        <el-card
-          class="summary-body"
-          body-style="padding: 10px;">
-          <div class ="title">订单数</div>
-          <div class ="content">122,123,123,213</div>
-        </el-card>
-      </el-col>
-      <el-col :span="8">
-        <el-card
-          class="summary-body"
-          body-style="padding: 10px;">
-          <div class ="title">佣金</div>
-          <div class ="content">￥122,123,123,213</div>
-        </el-card>
-      </el-col>
-    </el-row>
+        <el-col
+          :span="8"
+        >
+          <el-card
+            class="summary-body"
+            body-style="padding: 10px;">
+            <div class ="title">交易额</div>
+            <div class ="content">￥122,123,123,213</div>
+          </el-card>
+        </el-col>
+        <el-col
+          :span="8"
+        >
+          <el-card
+            class="summary-body"
+            body-style="padding: 10px;">
+            <div class ="title">订单数</div>
+            <div class ="content">122,123,123,213</div>
+          </el-card>
+        </el-col>
+        <el-col :span="8">
+          <el-card
+            class="summary-body"
+            body-style="padding: 10px;">
+            <div class ="title">佣金</div>
+            <div class ="content">￥122,123,123,213</div>
+          </el-card>
+        </el-col>
+      </el-row>
+
+    </el-header>
     <!-- </el-header> -->
     <el-header
       height="35%"
@@ -92,8 +99,8 @@ export default {
   height: 100%; */
   /* padding: 10px; */
   padding: 0;
-  background-color: #081249;
-  border-color: #081249;
+  background-color: #1c299a;
+  border-color:#1c299a;
   color:#ffffff;
 }
 .month-container {
