@@ -1,15 +1,14 @@
 <template>
   <div
+    v-resize-container
     ref="areaLine"
-    class="areaLine"
-    v-resize-container>area-line</div>
+    class="areaLine">area-line</div>
 </template>
 
 <script>
 export default {
   name: 'AreaLine',
-  props:
-  {
+  props: {
     options: {
       default: () => {},
       type: Object,
@@ -28,8 +27,16 @@ export default {
     // },
   },
   mounted() {
-    const { getSources, lineColor, areaColor, title } = Object.assign({}, { getSources: null, lineColor: 'nocolor', areaColor: 'noareaColor', title: 'test-test' }, this.options);
-
+    const { getSources, lineColor, areaColor, title } = Object.assign(
+      {},
+      {
+        getSources: null,
+        lineColor: 'nocolor',
+        areaColor: 'noareaColor',
+        title: 'test-test',
+      },
+      this.options,
+    );
 
     const titles = title.split('-');
 
@@ -42,13 +49,16 @@ export default {
         splitLine: {
           show: false,
         },
-        axisTick: { // 坐标刻度线
+        axisTick: {
+          // 坐标刻度线
           show: false,
         },
-        axisLine: { // 坐标轴线
+        axisLine: {
+          // 坐标轴线
           show: false,
         },
-        axisLabel: { // 坐标轴文本标签选项
+        axisLabel: {
+          // 坐标轴文本标签选项
           textStyle: {
             color: '#fff',
             fontSize: 12,
@@ -62,36 +72,41 @@ export default {
         splitLine: {
           show: false,
         },
-        axisTick: { // 坐标刻度线
+        axisTick: {
+          // 坐标刻度线
           show: false,
         },
-        axisLine: { // 坐标轴线
+        axisLine: {
+          // 坐标轴线
           show: false,
         },
-        axisLabel: { // 坐标轴文本标签选项
+        axisLabel: {
+          // 坐标轴文本标签选项
           textStyle: {
             color: '#fff',
             fontSize: 12,
           },
         },
       },
-      series: [{
-        data: ['', 400, 2, 3, 4, 5, 6, 99, 23, 234, 324, 343], // CONFIG
-        type: 'line',
-        areaStyle: {
-          normal: {
-            color: areaColor, // 'rgb(5, 58, 139)',
+      series: [
+        {
+          data: ['', 400, 2, 3, 4, 5, 6, 99, 23, 234, 324, 343], // CONFIG
+          type: 'line',
+          areaStyle: {
+            normal: {
+              color: areaColor, // 'rgb(5, 58, 139)',
+            },
           },
+          lineStyle: {
+            color: lineColor, // 'rgb(0, 107, 224)',
+            shadowColor: lineColor, // 'rgba(0, 107, 224)',
+            shadowBlur: 20,
+            shadowOffsetX: 5,
+            opacity: 1,
+          },
+          symbolSize: 0,
         },
-        lineStyle: {
-          color: lineColor, // 'rgb(0, 107, 224)',
-          shadowColor: lineColor, // 'rgba(0, 107, 224)',
-          shadowBlur: 20,
-          shadowOffsetX: 5,
-          opacity: 1,
-        },
-        symbolSize: 0,
-      }],
+      ],
       grid: [
         {
           width: '90%',
@@ -122,24 +137,42 @@ export default {
     myChart.showLoading();
     myChart.setOption(option);
 
+    // const getxAxisData = getSources; // [...sources.keys()];
 
-    const getxAxisData = getSources; // [...sources.keys()];
+    if (!!getSources && typeof getSources === 'function') {
+      const getSourcesPromise = getSources();
+      if (typeof getSourcesPromise.then === 'function') {
+        getSourcesPromise.then(
+          (responce) => {
+            let getxAxisData;
+            let tempData;
+            if (!!responce && responce instanceof Array) {
+              getxAxisData = [...responce.keys()].map(i => i + 1);
+              getxAxisData.unshift(0);
 
-    if (typeof getxAxisData.then === 'function') {
-      getxAxisData().then(((responce) => {
-        myChart.hideLoading(); // 隐藏加载动画
-        myChart.setOption({
-        // 加载数据图表
-          series: [
-            {
-            // 根据名字对应到相应的系列
-              data: responce,
-            },
-          ],
-        });
-      }, (err) => {
-        console.log(err);
-      }));
+              tempData = responce.map(i => i.amount);
+              tempData.unshift('');
+            }
+            myChart.hideLoading(); // 隐藏加载动画
+
+            myChart.setOption({
+              // 加载数据图表
+              xAxis: {
+                data: getxAxisData,
+              },
+              series: [
+                {
+                  // 根据名字对应到相应的系列
+                  data: tempData,
+                },
+              ],
+            });
+          },
+          (err) => {
+            console.log(err);
+          },
+        );
+      }
     }
 
     window.addEventListener('resize', () => {
@@ -151,4 +184,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.areaLine {
+  height: 100%;
+  width: 100%;
+  line-height: 100%;
+}
 </style>

@@ -176,8 +176,258 @@ const tempData = [{
   orders: '12321321',
 }];
 
+const tempMonthlyAmounts = [
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '300',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '123',
+  },
+  {
+    date: '1',
+    amount: '233',
+  },
+  {
+    date: '1',
+    amount: '231',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+];
+
+
+const tempMonthlyOrder = [
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '300',
+  },
+  {
+    date: '1',
+    amount: '400',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '123',
+  },
+  {
+    date: '1',
+    amount: '123',
+  },
+  {
+    date: '1',
+    amount: '233',
+  },
+  {
+    date: '1',
+    amount: '231',
+  },
+  {
+    date: '1',
+    amount: '90',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '300',
+  },
+  {
+    date: '1',
+    amount: '23',
+  },
+  {
+    date: '1',
+    amount: '100',
+  },
+  {
+    date: '1',
+    amount: '228',
+  },
+];
 
 Mock.mock('/transaction/daily', 'post', tempData);
+Mock.mock('/transaction/monthly-amounts', 'post', tempMonthlyAmounts);
+Mock.mock('/transaction/monthly-orders', 'post', tempMonthlyOrder);
 
 
 export default Mock;

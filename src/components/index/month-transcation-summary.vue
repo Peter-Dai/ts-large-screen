@@ -22,42 +22,43 @@
     <el-header
       height="35%"
       class="month-header">
-      <AreaLine :options ="options1"/>
+      <AreaLine :options ="amountChartOptions"/>
     </el-header>
     <el-header
       height="35%"
       class="month-header">
-      <AreaLine
-        :options ="options2"/></el-header>
-    {{ options }}
+      <AreaLine :options ="orderChartOptions"/>
+    </el-header>
   </el-container>
 </template>
 
 <script>
+import transactionApi from '@/api/transaction';
 import AreaLine from '../common/area-line';
-
 import HistogramBar from '../common/histogram-bar';
+
 
 export default {
   name: 'MonthTranscationSummary',
-  data() {
-    return {
-      options1: {
-        getSources: () => new Promise((resolve) => {
-          resolve([{ peter: 1 }, { peter: 2 }]);
-        }),
-        lineColor: 'peter ',
-        title: 'afasdf',
-        areaColor: '3432432',
-      },
-      options2: {
-        lineColor: 'peter ',
-      },
-    };
-  },
   components: {
     AreaLine,
     HistogramBar,
+  },
+  data() {
+    return {
+      amountChartOptions: {
+        getSources: transactionApi.retrieveMonthlyAmounts,
+        lineColor: 'rgb(0, 107, 224)',
+        title: '万元-交易额',
+        areaColor: 'rgb(5, 58, 139)',
+      },
+      orderChartOptions: {
+        getSources: transactionApi.retrieveMonthlyOrders,
+        lineColor: 'rgb(186, 0, 184)',
+        title: '笔-订单数',
+        areaColor: 'rgb(91, 9, 135)',
+      },
+    };
   },
 };
 </script>
