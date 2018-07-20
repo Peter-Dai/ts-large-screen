@@ -13,6 +13,18 @@ const transactionApi = {
       method: 'post',
     });
   },
+  retrieveMonthlyAmounts() {
+    return request({
+      url: '/transaction/monthly-amounts',
+      method: 'post',
+    });
+  },
+  retrieveMonthlyOrders() {
+    return request({
+      url: '/transaction/monthly-orders',
+      method: 'post',
+    });
+  },
   retrieveTopFiveTransaction() {
     return request({
       url: '/transaction/top-five',

@@ -13,8 +13,8 @@
               v-for="(value,index) in renderCountArray()">
               <div
                 v-if="value !=','"
-                class="num-div"
-                :key="index">{{ value }}</div>
+                :key="index"
+                class="num-div">{{ value }}</div>
 
               <template v-else>,</template>
             </template>
@@ -28,8 +28,8 @@
               v-for="(value,index) in renderCountArray()">
               <div
                 v-if="value !=','"
-                class="num-div"
-                :key="index">{{ value }}</div>
+                :key="index"
+                class="num-div">{{ value }}</div>
 
               <template v-else>,</template>
             </template>
@@ -48,14 +48,14 @@ import DomesticMap from '../common/domestic-map';
 
 export default {
   name: 'TodayTransactionSummary',
+  components: {
+    DomesticMap,
+  },
   data() {
     return {
       counts: '1',
       amounts: '2',
     };
-  },
-  components: {
-    DomesticMap,
   },
 
   mounted() {
