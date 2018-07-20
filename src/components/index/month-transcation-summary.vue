@@ -4,21 +4,44 @@
     <div style="text-align:left">
       最近30天实时数据
     </div>
-    <el-header
+    <!-- <el-header
       height="22%"
-      class="month-header">
-      <el-row :gutter="24">
-        <el-col :span="8">
-          <div>交易额</div>
-          <div>￥122,123,123,213</div>
-        </el-col>
-        <el-col :span="8">
-          <div>订单数</div>
-          <div>1232</div>
-        </el-col>
-        <el-col :span="8">ksnkfjlkfdjlkgfdjlgjs</el-col>
-      </el-row>
-    </el-header>
+      class="month-header"
+      style="text-align:left; font-size:12px"> -->
+    <el-row
+      :gutter="24"
+      height="22%"
+      style="text-align:left; font-size:12px;margin-top:10px; margin-bottom:10px; height:'22%'">
+      <el-col
+        :span="8"
+      >
+        <el-card
+          class="summary-body"
+          body-style="padding: 10px;">
+          <div class ="title">交易额</div>
+          <div class ="content">￥122,123,123,213</div>
+        </el-card>
+      </el-col>
+      <el-col
+        :span="8"
+      >
+        <el-card
+          class="summary-body"
+          body-style="padding: 10px;">
+          <div class ="title">订单数</div>
+          <div class ="content">122,123,123,213</div>
+        </el-card>
+      </el-col>
+      <el-col :span="8">
+        <el-card
+          class="summary-body"
+          body-style="padding: 10px;">
+          <div class ="title">佣金</div>
+          <div class ="content">￥122,123,123,213</div>
+        </el-card>
+      </el-col>
+    </el-row>
+    <!-- </el-header> -->
     <el-header
       height="35%"
       class="month-header">
@@ -36,7 +59,6 @@
 import transactionApi from '@/api/transaction';
 import AreaLine from '../common/area-line';
 import HistogramBar from '../common/histogram-bar';
-
 
 export default {
   name: 'MonthTranscationSummary',
@@ -65,6 +87,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.summary-body {
+  /* background-color: aqua;
+  height: 100%; */
+  /* padding: 10px; */
+  padding: 0;
+  background-color: #081249;
+  border-color: #081249;
+  color:#ffffff;
+}
 .month-container {
   color: #ffffff;
   height: 100%;
@@ -78,16 +109,24 @@ export default {
   background: #081249;
 }
 
-.month-header .el-row{
+.month-header .el-row {
   height: 100%;
 }
 
-.month-header .el-col{
+.month-header .el-col {
   margin: 10px 0;
   height: 100%;
 }
 
 .month-header:last-child {
   margin-bottom: 0;
+}
+
+.title {
+  margin-bottom: 15px;
+}
+
+.content{
+  color: #66ccff;
 }
 </style>

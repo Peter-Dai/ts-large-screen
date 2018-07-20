@@ -56,7 +56,7 @@ export default {
 }
 
 .right-aside {
-  background-color: green;
+  background-color:#060246;;
 }
 
 
