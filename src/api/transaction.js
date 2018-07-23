@@ -25,9 +25,21 @@ const transactionApi = {
       method: 'post',
     });
   },
-  retrieveTopFiveTransaction() {
+  retrieveTopFiveTransactionAmount() {
     return request({
-      url: '/transaction/top-five',
+      url: '/transaction/top-five-amount',
+      method: 'post',
+    });
+  },
+  retrieveTopFiveTransactionNumber() {
+    return request({
+      url: '/transaction/top-five-number',
+      method: 'post',
+    });
+  },
+  retrieveTopFiveDoughnutPie() {
+    return request({
+      url: '/transaction/top-five-doughnutpie',
       method: 'post',
     });
   },

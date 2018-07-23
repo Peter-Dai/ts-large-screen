@@ -425,9 +425,75 @@ const tempMonthlyOrder = [
   },
 ];
 
+
+const tempTransactionAmount = [
+  {
+    name: '深圳',
+    value: '83.21',
+  },
+  {
+    name: '北京',
+    value: '93.21',
+  },
+  {
+    name: '上海',
+    value: '103.21',
+  },
+  {
+    name: '南京',
+    value: '113.21',
+  },
+  {
+    name: '杭州',
+    value: '123.21',
+  },
+];
+
+const tempTransactionNumber = [
+  {
+    name: '深圳',
+    value: '83.22',
+  },
+  {
+    name: '北京',
+    value: '93.22',
+  },
+  {
+    name: '上海',
+    value: '103.22',
+  },
+  {
+    name: '南京',
+    value: '113.22',
+  },
+  {
+    name: '杭州',
+    value: '123.22',
+  },
+];
+
+const tempDoughnutPie = [
+  [
+    { value: 535, name: '支付宝' },
+    { value: 30, name: '银行卡' },
+    { value: 435, name: '微信' },
+  ],
+  [
+    { value: 335, name: '二维码订单' },
+    { value: 310, name: '收银台订单' },
+    { value: 234, name: '银行卡订单' },
+    { value: 234, name: '小程序订单' },
+    { value: 234, name: 'API订单' },
+    { value: 234, name: 'APP订单' },
+  ],
+];
+
 Mock.mock('/transaction/daily', 'post', tempData);
 Mock.mock('/transaction/monthly-amounts', 'post', tempMonthlyAmounts);
 Mock.mock('/transaction/monthly-orders', 'post', tempMonthlyOrder);
+Mock.mock('/transaction/top-five-amount', 'post', tempTransactionAmount);
+Mock.mock('/transaction/top-five-number', 'post', tempTransactionNumber);
+Mock.mock('/transaction/top-five-doughnutpie', 'post', tempDoughnutPie);
 
 
 export default Mock;

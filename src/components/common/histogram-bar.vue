@@ -10,16 +10,26 @@
 <script>
 export default {
   name: 'HistogramBar',
-  data() {
-    return {
-      msg: '',
-    };
+  props: {
+    options: {
+      default: () => {
+      },
+      type: Object,
+    },
   },
   mounted() {
+    const { getSources, title } = Object.assign(
+      {},
+      {
+        getSources: null,
+        title: 'test-test',
+      },
+      this.options,
+    );
     const myChart = this.$echarts.init(this.$refs.histogramBar);
     const option = {
       title: {
-        text: '最近30天交易额 TOP 5 城市',
+        text: title,
         textStyle: {
           color: '#fff',
           fontSize: '100%',
@@ -59,7 +69,7 @@ export default {
           axisLine: { // 坐标轴线
             show: false,
           },
-          data: ['深圳', '北京', '上海', '南京', '杭州'],
+          data: [],
         },
       ],
       series: [
@@ -81,15 +91,57 @@ export default {
             },
           },
           barWidth: 5,
-          data: [83.21, 93.21, 103.21, 113.21, 123.21],
+          data: [],
         },
       ],
     };
+    myChart.showLoading();
     myChart.setOption(option);
+    // 接口数据
+    if (!!getSources && typeof getSources === 'function') {
+      const getSourcesPromise = getSources();
+      if (typeof getSourcesPromise.then === 'function') {
+        getSourcesPromise.then(
+          (responce) => {
+            let getyAxisData;
+            let tempData;
+            if (!!responce && responce instanceof Array) {
+              getyAxisData = responce.map(i => i.name);
+
+              tempData = responce.map(i => i.value);
+            }
+            myChart.hideLoading(); // 隐藏加载动画
+            myChart.setOption({
+              // 加载数据图表
+              yAxis: {
+                data: getyAxisData,
+              },
+              series: [
+                {
+                  // 根据名字对应到相应的系列
+                  data: tempData,
+                },
+              ],
+            });
+          },
+          (err) => {
+            console.log(err);
+          },
+        );
+      }
+    }
+    // 自适应
     window.addEventListener('resize', () => {
       const currentClientwidth = this.$refs.histogramBar.clientWidth - 102;
-      option.series[0].label.normal.position = [currentClientwidth, -5];
-      myChart.setOption(option);
+      myChart.setOption({
+        series: {
+          label: { // 图形上数据信息
+            normal: {
+              position: [currentClientwidth, '-5'], // 图形上数据信息的位置
+            },
+          },
+        },
+      });
       myChart.resize();
     });
   },

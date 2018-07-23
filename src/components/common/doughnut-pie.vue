@@ -10,17 +10,27 @@
 <script>
 export default {
   name: 'DoughnutPie',
-  data() {
-    return {
-      msg: '',
-    };
+  props: {
+    options: {
+      default: () => {
+      },
+      type: Object,
+    },
   },
   mounted() {
+    const { getSources, title } = Object.assign(
+      {},
+      {
+        getSources: null,
+        title: 'test-test',
+      },
+      this.options,
+    );
     const myChart = this.$echarts.init(this.$refs.doughnutPie);
     const option = {
       title: [ // 设置两个title
         {
-          text: '支付方式',
+          text: title[0],
           x: '19%',
           y: 'bottom',
           textStyle: {
@@ -29,7 +39,7 @@ export default {
           },
         },
         {
-          text: '支付终端',
+          text: title[1],
           x: '69%',
           y: 'bottom',
           textStyle: {
@@ -61,11 +71,7 @@ export default {
               },
             },
           },
-          data: [
-            { value: 535, name: '支付宝', itemStyle: { normal: { color: '#0068ed' } } },
-            { value: 30, name: '银行卡', itemStyle: { normal: { color: '#efef50' } } },
-            { value: 435, name: '微信', itemStyle: { normal: { color: '#00b674' } } },
-          ],
+          data: [],
         },
         {
           name: '支付终端',
@@ -86,19 +92,45 @@ export default {
               },
             },
           },
-          data: [
-            { value: 335, name: '二维码订单', itemStyle: { normal: { color: '#f7461c' } } },
-            { value: 310, name: '收银台订单', itemStyle: { normal: { color: '#efaa20' } } },
-            { value: 234, name: '银行卡订单', itemStyle: { normal: { color: '#efef50' } } },
-            { value: 234, name: '小程序订单', itemStyle: { normal: { color: '#00b674' } } },
-            { value: 234, name: 'API订单', itemStyle: { normal: { color: '#008bfb' } } },
-            { value: 234, name: 'APP订单', itemStyle: { normal: { color: '#0069eb' } } },
-          ],
+          data: [],
         },
       ],
     };
+    myChart.showLoading();
     myChart.setOption(option);
 
+    if (!!getSources && typeof getSources === 'function') {
+      const getSourcesPromise = getSources();
+      if (typeof getSourcesPromise.then === 'function') {
+        getSourcesPromise.then(
+          (responce) => {
+            let tempPaymentMethod;
+            let tempPaymentTerminal;
+            if (!!responce && responce instanceof Array) {
+              tempPaymentMethod = responce[0];
+              tempPaymentTerminal = responce[1];
+            }
+            myChart.hideLoading(); // 隐藏加载动画
+
+            myChart.setOption({
+              // 加载数据图表
+              series: [
+                {
+                  // 根据名字对应到相应的系列
+                  data: tempPaymentMethod,
+                },
+                {
+                  data: tempPaymentTerminal,
+                },
+              ],
+            });
+          },
+          (err) => {
+            console.log(err);
+          },
+        );
+      }
+    }
     window.addEventListener('resize', () => {
       myChart.resize();
     });
