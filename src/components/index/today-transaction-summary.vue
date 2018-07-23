@@ -95,7 +95,7 @@ export default {
 }
 
 .num-div {
-  width: 15px;
+  /* width: 15px; */
   display: inline-block;
   background-color: #0051f8;
   color: #ffffff;

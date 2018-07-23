@@ -22,13 +22,15 @@ export default {
         text: '最近30天交易额 TOP 5 城市',
         textStyle: {
           color: '#fff',
+          fontSize: '100%',
         },
+        padding: '100%',
       },
       grid: [{
         width: '90%',
         height: '80%',
-        x: 5,
-        y: 35,
+        x: '3%',
+        y: '15%',
         containLabel: true,
       }],
       tooltip: {
@@ -45,7 +47,7 @@ export default {
           axisLabel: { // 坐标轴文本标签选项
             textStyle: {
               color: '#fff',
-              fontSize: 12,
+              fontSize: '60%',
             },
           },
           splitLine: { // 分隔线
@@ -66,10 +68,11 @@ export default {
           type: 'bar',
           label: { // 图形上数据信息
             normal: {
-              position: [this.$refs.histogramBar.clientWidth - 102, '-5'], // 图形上数据信息的位置
+              position: [this.$refs.histogramBar.clientWidth * 0.8, -5], // 图形上数据信息的位置
               show: true,
               color: '#fff',
               formatter: '{c}万元', // 图形上数据信息格式化
+              fontSize: '66%',
             },
           },
           itemStyle: {
@@ -96,7 +99,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .histogramBar {
-  padding-top: 6px;
+  padding: 0;
   width: 100%;
   height: 100%;
   line-height: 100%;

@@ -61,7 +61,8 @@ export default {
           // 坐标轴文本标签选项
           textStyle: {
             color: '#fff',
-            fontSize: 12,
+            // fontSize: 12,
+            fontSize: '66%',
           },
           interval: 4,
         },
@@ -84,7 +85,9 @@ export default {
           // 坐标轴文本标签选项
           textStyle: {
             color: '#fff',
-            fontSize: 12,
+            // fontSize: 12,
+            fontSize: '66%',
+
           },
         },
       },
@@ -111,24 +114,28 @@ export default {
         {
           width: '90%',
           height: '70%',
-          x: 5,
-          y: 30,
+          x: '3%',
+          y: '15%',
           containLabel: true,
         },
       ],
       title: {
         text: `{white|单位：${titles[0]}} {blue|———} {white|${titles[1]}}`,
-        top: '5px',
+        // top: '5px',
         textStyle: {
           rich: {
             blue: {
               color: lineColor, // 'rgb(0, 107, 224)',
               lineHeight: 10,
               padding: [3, 10, -5, 10],
+              // fontSize: '66%',
             },
             white: {
               color: 'rgb(255, 255, 255)',
+              // padding: 0,
+              fontSize: '66%',
               padding: [3, 10, -5, 10],
+
             },
           },
         },

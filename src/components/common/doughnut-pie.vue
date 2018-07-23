@@ -24,7 +24,7 @@ export default {
           x: '19%',
           y: 'bottom',
           textStyle: {
-            fontSize: '10',
+            fontSize: '60%',
             color: '#fff',
           },
         },
@@ -33,7 +33,7 @@ export default {
           x: '69%',
           y: 'bottom',
           textStyle: {
-            fontSize: '10',
+            fontSize: '60%',
             color: '#fff',
           },
         },

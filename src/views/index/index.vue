@@ -38,29 +38,31 @@ export default {
       msg: '',
     };
   },
-  // mounted() {
-  //   const currentClientwidth = document.documentElement.clientWidth;
-  //   console.log(`width------${currentClientwidth}`);
-  //   console.log(`height------${(currentClientwidth * 9) / 64}`);
-  //   this.$el.style.width = `${currentClientwidth}px`;
-  //   this.$el.style.height = `${(currentClientwidth * 9) / 64}px`;
+  mounted() {
+    // const currentClientwidth = document.documentElement.clientWidth;
+    // console.log(`width------${currentClientwidth}`);
+    // console.log(`height------${(currentClientwidth * 9) / 64}`);
+    // this.$el.style.width = `${currentClientwidth}px`;
+    // this.$el.style.height = `${currentClientwidth / 7}px`;
 
 
-  //   window.addEventListener('resize', () => {
-  //     const currentClientwidth1 = document.documentElement.clientWidth;
-  //     console.log(`width------${currentClientwidth1}`);
-  //     console.log(`height------${(currentClientwidth1 * 9) / 64}`);
-  //     this.$el.style.width = `${currentClientwidth}px`;
-  //     this.$el.style.height = `${(currentClientwidth * 9) / 64}px`;
-  //   });
-  // },
+    // window.addEventListener('resize', () => {
+    //   const currentClientwidth1 = document.documentElement.clientWidth;
+    //   console.log(`width------${currentClientwidth1}`);
+    //   console.log(`height------${(currentClientwidth1 * 9) / 64}`);
+    //   this.$el.style.width = `${currentClientwidth}px`;
+    //   this.$el.style.height = `${currentClientwidth / 7}px`;
+    // });
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .container{
-  height: 400px;
+   height: 400px;
+   /* width: 15360px;
+  height: 2160px; */
 }
 
 .left-aside {

@@ -6,14 +6,10 @@
       height="3%">
       最近30天实时数据
     </el-header>
-    <!-- <el-header
-      height="22%"
-      class="month-header"
-      style="text-align:left; font-size:12px"> -->
     <el-header
       class="month-header"
-      height="20%"
-      style="text-align:left; font-size:12px;margin-top:10px; margin-bottom:10px; height:'22%'">
+      height="auto"
+      style="text-align:left;margin-top:10px; margin-bottom:10px;">
       <el-row
         :gutter="24"
       >
@@ -114,10 +110,13 @@ export default {
 .month-header {
   margin-bottom: 10px;
   background: #081249;
+  font-size:0.66rem;
 }
 
 .month-header .el-row {
   height: 100%;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 .month-header .el-col {

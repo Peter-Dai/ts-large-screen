@@ -26,18 +26,18 @@ export default {
         transitionDuration: 0.2,
 
         formatter(params) {
-          return `<div style="padding:5px;text-align:left;font-size:12px;">
-                    <div>
-                      <span style="font-size:14px" >${params.name}省</span>
+          return `<div style="padding:5px;text-align:left;font-size:0.66rem;">
+                    <div style ='line-height: initial;'>
+                      <span style="font-size:0.77rem" >${params.name}省</span>
                     </div>
-                    <div>
-                      <span >交易金额:</span><span style='color:#ffff3b;font-size:14px'>
+                    <div style ='line-height: initial;'>
+                      <span >交易金额:</span><span style='color:#ffff3b;font-size:0.77rem'>
                         ${params.data.amount}
                       </span>万元
                     </div>
-                    <div>
+                    <div style ='line-height: initial;'>
                       <span>订单数:</span>
-                      <span style='color:#ffff3b;font-size:14px'>
+                      <span style='color:#ffff3b;font-size:0.77rem'>
                         ${params.data.orders}
                       </span>
                     </div>
