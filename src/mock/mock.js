@@ -425,9 +425,58 @@ const tempMonthlyOrder = [
   },
 ];
 
+
+const tempTransactionVolume = [
+  {
+    city: '深圳',
+    data: '83.21',
+  },
+  {
+    city: '北京',
+    data: '93.21',
+  },
+  {
+    city: '上海',
+    data: '103.21',
+  },
+  {
+    city: '南京',
+    data: '113.21',
+  },
+  {
+    city: '杭州',
+    data: '123.21',
+  },
+];
+
+const tempTransactionNumber = [
+  {
+    city: '深圳',
+    data: '83.22',
+  },
+  {
+    city: '北京',
+    data: '93.22',
+  },
+  {
+    city: '上海',
+    data: '103.22',
+  },
+  {
+    city: '南京',
+    data: '113.22',
+  },
+  {
+    city: '杭州',
+    data: '123.22',
+  },
+];
+
 Mock.mock('/transaction/daily', 'post', tempData);
 Mock.mock('/transaction/monthly-amounts', 'post', tempMonthlyAmounts);
 Mock.mock('/transaction/monthly-orders', 'post', tempMonthlyOrder);
+Mock.mock('/transaction/top-five/volume', 'post', tempTransactionVolume);
+Mock.mock('/transaction/top-five/number', 'post', tempTransactionNumber);
 
 
 export default Mock;

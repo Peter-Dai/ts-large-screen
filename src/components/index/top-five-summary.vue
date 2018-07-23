@@ -4,12 +4,12 @@
     <el-header
       height="35%"
       class="top-header">
-      <histogramBar/>
+      <histogramBar :options ="transactionVolumeOption"/>
     </el-header>
     <el-header
       height="35%"
       class="top-header">
-      <histogramBar/>
+      <histogramBar :options ="transactionNumberOption"/>
     </el-header>
     <el-header
       height="22%"
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import transactionApi from '@/api/transaction';
 import HistogramBar from '../common/histogram-bar';
 import DoughnutPie from '../common/doughnut-pie';
 
@@ -28,7 +29,14 @@ export default {
   components: { DoughnutPie, HistogramBar },
   data() {
     return {
-      msg: '',
+      transactionVolumeOption: {
+        getSources: transactionApi.retrieveTopFiveTransactionVolume,
+        title: '最近30天交易额 TOP 5 城市',
+      },
+      transactionNumberOption: {
+        getSources: transactionApi.retrieveTopFiveTransactionNumber,
+        title: '最近30天交易笔数 TOP 5 城市',
+      },
     };
   },
 };
