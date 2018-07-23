@@ -37,6 +37,12 @@ const transactionApi = {
       method: 'post',
     });
   },
+  retrieveTopFiveDoughnutPie() {
+    return request({
+      url: '/transaction/top-five-doughnutpie',
+      method: 'post',
+    });
+  },
 };
 
 export default transactionApi;
