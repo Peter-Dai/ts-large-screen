@@ -26,11 +26,10 @@ export default {
       },
       this.options,
     );
-    const titles = title;
     const myChart = this.$echarts.init(this.$refs.histogramBar);
     const option = {
       title: {
-        text: titles,
+        text: title,
         textStyle: {
           color: '#fff',
         },
@@ -104,9 +103,9 @@ export default {
             let getyAxisData;
             let tempData;
             if (!!responce && responce instanceof Array) {
-              getyAxisData = responce.map(i => i.city);
+              getyAxisData = responce.map(i => i.name);
 
-              tempData = responce.map(i => i.data);
+              tempData = responce.map(i => i.value);
             }
             myChart.hideLoading(); // 隐藏加载动画
             myChart.setOption({
@@ -131,8 +130,15 @@ export default {
     // 自适应
     window.addEventListener('resize', () => {
       const currentClientwidth = this.$refs.histogramBar.clientWidth - 102;
-      option.series[0].label.normal.position = [currentClientwidth, -5];
-      myChart.setOption(option);
+      myChart.setOption({
+        series: {
+          label: { // 图形上数据信息
+            normal: {
+              position: [currentClientwidth, '-5'], // 图形上数据信息的位置
+            },
+          },
+        },
+      });
       myChart.resize();
     });
   },

@@ -426,57 +426,57 @@ const tempMonthlyOrder = [
 ];
 
 
-const tempTransactionVolume = [
+const tempTransactionAmount = [
   {
-    city: '深圳',
-    data: '83.21',
+    name: '深圳',
+    value: '83.21',
   },
   {
-    city: '北京',
-    data: '93.21',
+    name: '北京',
+    value: '93.21',
   },
   {
-    city: '上海',
-    data: '103.21',
+    name: '上海',
+    value: '103.21',
   },
   {
-    city: '南京',
-    data: '113.21',
+    name: '南京',
+    value: '113.21',
   },
   {
-    city: '杭州',
-    data: '123.21',
+    name: '杭州',
+    value: '123.21',
   },
 ];
 
 const tempTransactionNumber = [
   {
-    city: '深圳',
-    data: '83.22',
+    name: '深圳',
+    value: '83.22',
   },
   {
-    city: '北京',
-    data: '93.22',
+    name: '北京',
+    value: '93.22',
   },
   {
-    city: '上海',
-    data: '103.22',
+    name: '上海',
+    value: '103.22',
   },
   {
-    city: '南京',
-    data: '113.22',
+    name: '南京',
+    value: '113.22',
   },
   {
-    city: '杭州',
-    data: '123.22',
+    name: '杭州',
+    value: '123.22',
   },
 ];
 
 Mock.mock('/transaction/daily', 'post', tempData);
 Mock.mock('/transaction/monthly-amounts', 'post', tempMonthlyAmounts);
 Mock.mock('/transaction/monthly-orders', 'post', tempMonthlyOrder);
-Mock.mock('/transaction/top-five/volume', 'post', tempTransactionVolume);
-Mock.mock('/transaction/top-five/number', 'post', tempTransactionNumber);
+Mock.mock('/transaction/top-five-amount', 'post', tempTransactionAmount);
+Mock.mock('/transaction/top-five-number', 'post', tempTransactionNumber);
 
 
 export default Mock;

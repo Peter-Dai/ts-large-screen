@@ -25,15 +25,15 @@ const transactionApi = {
       method: 'post',
     });
   },
-  retrieveTopFiveTransactionVolume() {
+  retrieveTopFiveTransactionAmount() {
     return request({
-      url: '/transaction/top-five/volume',
+      url: '/transaction/top-five-amount',
       method: 'post',
     });
   },
   retrieveTopFiveTransactionNumber() {
     return request({
-      url: '/transaction/top-five/number',
+      url: '/transaction/top-five-number',
       method: 'post',
     });
   },
