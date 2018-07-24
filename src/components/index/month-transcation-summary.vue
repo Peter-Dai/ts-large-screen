@@ -104,7 +104,7 @@ export default {
   height: 100%;
   /* padding-left: 6%;
   padding-top: 10px; */
-  padding: 10px;
+  padding: 0.5rem;
 }
 
 .month-header {

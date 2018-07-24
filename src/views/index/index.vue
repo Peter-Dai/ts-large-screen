@@ -60,13 +60,19 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .container{
-   height: 400px;
+   /* width: 1920px;
+  height: 270px; */
+
+   width: 2844.44 px;
+  height: 400px;
+
    /* width: 15360px;
   height: 2160px; */
 }
 
 .left-aside {
   background-color: #080b37;
+  padding: 0.5rem;
 }
 
 .main {
@@ -74,7 +80,8 @@ export default {
 }
 
 .right-aside {
-  background-color:#060246;;
+  background-color:#060246;
+  padding: 0.5rem;
 }
 
 

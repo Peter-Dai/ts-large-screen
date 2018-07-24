@@ -12,7 +12,7 @@
       <histogramBar :options ="transactionNumberOption"/>
     </el-header>
     <el-header
-      height="22%"
+      height="25%"
       class="top-header">
       <doughnutPie :options ="doughnutPieOption"/>
     </el-header>
@@ -50,16 +50,18 @@ export default {
 <style scoped>
 .top-container {
   height: 100%;
-  padding-left: 6%;
-  padding-top: 10px;
+  /* padding-left: 1%; */
+  /* padding-top: 10px; */
 }
 
 .top-header {
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
+  padding: 0.3rem;
   background: #081249;
 }
 
 .top-header:last-child {
-  padding: 0 2%;
+  /* padding: 0 2%; */
+  padding: 0;
 }
 </style>
