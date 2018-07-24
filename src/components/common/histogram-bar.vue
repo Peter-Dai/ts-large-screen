@@ -1,8 +1,8 @@
 <template>
   <div
+    v-resize-container
     ref="histogramBar"
-    class="histogramBar"
-    resize-container>
+    class="histogramBar">
     histogramBar
   </div>
 </template>
@@ -12,8 +12,7 @@ export default {
   name: 'HistogramBar',
   props: {
     options: {
-      default: () => {
-      },
+      default: () => {},
       type: Object,
     },
   },
@@ -26,6 +25,15 @@ export default {
       },
       this.options,
     );
+    const remfontSize = getComputedStyle(
+      document.getElementsByTagName('html')[0],
+      null,
+    )['font-size'];
+    let remSize = 18;
+    if (remfontSize) {
+      remSize = +remfontSize.replace(/[p|x]/g, '');
+    }
+
     const myChart = this.$echarts.init(this.$refs.histogramBar);
     const option = {
       title: {
@@ -38,13 +46,15 @@ export default {
         },
         padding: '100%',
       },
-      grid: [{
-        width: '90%',
-        height: '80%',
-        x: '3%',
-        y: '15%',
-        containLabel: true,
-      }],
+      grid: [
+        {
+          width: '100%',
+          height: '93%',
+          x: '0',
+          y: '13%',
+          containLabel: true,
+        },
+      ],
       tooltip: {
         trigger: 'axis',
       },
@@ -56,21 +66,25 @@ export default {
       yAxis: [
         {
           type: 'category',
-          axisLabel: { // 坐标轴文本标签选项
+          axisLabel: {
+            // 坐标轴文本标签选项
             textStyle: {
               color: '#fff',
-              fontSize: '60%',
+              fontSize: 0.66 * remSize,
               fontFamily: 'Arial, Verdana, sans-serif',
               fontWeight: 800,
             },
           },
-          splitLine: { // 分隔线
+          splitLine: {
+            // 分隔线
             show: false,
           },
-          axisTick: { // 坐标刻度线
+          axisTick: {
+            // 坐标刻度线
             show: false,
           },
-          axisLine: { // 坐标轴线
+          axisLine: {
+            // 坐标轴线
             show: false,
           },
           data: [],
@@ -80,13 +94,14 @@ export default {
         {
           name: '最近30天交易额',
           type: 'bar',
-          label: { // 图形上数据信息
+          label: {
+            // 图形上数据信息
             normal: {
-              position: [this.$refs.histogramBar.clientWidth * 0.8, -5], // 图形上数据信息的位置
+              position: [this.$refs.histogramBar.clientWidth - (remSize * 6), -5], // 图形上数据信息的位置
               show: true,
               color: '#fff',
               formatter: '{c}万元', // 图形上数据信息格式化
-              fontSize: '66%',
+              fontSize: 0.66 * remSize,
             },
           },
           itemStyle: {
@@ -94,7 +109,7 @@ export default {
               color: '#0f35ff',
             },
           },
-          barWidth: 5,
+          barWidth: 0.5 * remSize,
           data: [],
         },
       ],
@@ -136,12 +151,15 @@ export default {
     }
     // 自适应
     window.addEventListener('resize', () => {
-      const currentClientwidth = this.$refs.histogramBar.clientWidth - 102;
       myChart.setOption({
         series: {
-          label: { // 图形上数据信息
+          label: {
+            // 图形上数据信息
             normal: {
-              position: [currentClientwidth, '-5'], // 图形上数据信息的位置
+              position: [
+                this.$refs.histogramBar.clientWidth - (remSize * 6),
+                '-5',
+              ], // 图形上数据信息的位置
             },
           },
         },

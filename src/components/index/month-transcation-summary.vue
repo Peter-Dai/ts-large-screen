@@ -2,44 +2,41 @@
   <el-container
     class="month-container">
     <el-header
-      style="text-align:left;font-family: 'Arial, Verdana, sans-serif';font-weight: 700"
-      height="3%">
+      class="month-header"
+      height="auto"
+    >
       最近30天实时数据
     </el-header>
     <el-header
       class="month-header"
       height="auto"
-      style="text-align:left;margin-top:10px; margin-bottom:10px;">
+      style="text-align:left;">
       <el-row
         :gutter="24"
+        type="flex"
+        justify="space-around"
       >
         <el-col
-          :span="8"
+          :span="7"
         >
-          <el-card
-            class="summary-body"
-            body-style="padding: 10px;">
+          <div>
             <div class ="title">交易额</div>
             <div class ="content">￥122,123,123,213</div>
-          </el-card>
+          </div>
+
+
         </el-col>
         <el-col
-          :span="8"
+          :span="7"
         >
-          <el-card
-            class="summary-body"
-            body-style="padding: 10px;">
-            <div class ="title">订单数</div>
-            <div class ="content">122,123,123,213</div>
-          </el-card>
+
+          <div class ="title">订单数</div>
+          <div class ="content">122,123,123,213</div>
         </el-col>
-        <el-col :span="8">
-          <el-card
-            class="summary-body"
-            body-style="padding: 10px;">
-            <div class ="title">佣金</div>
-            <div class ="content">￥122,123,123,213</div>
-          </el-card>
+        <el-col :span="7">
+
+          <div class ="title">佣金</div>
+          <div class ="content">￥122,123,123,213</div>
         </el-col>
       </el-row>
 
@@ -95,26 +92,26 @@ export default {
   height: 100%; */
   /* padding: 10px; */
   padding: 0;
-  /*background-color: #1c299a;*/
   background: linear-gradient(to right, #031399, #071159);
   opacity: 0.8;
-  border-color:#1c299a;
-  color:#ffffff;
+  border-color: #1c299a;
+  color: #ffffff;
+  height: 100%;
 }
 .month-container {
   color: #ffffff;
   height: 100%;
   /* padding-left: 6%;
   padding-top: 10px; */
-  padding: 10px;
+  /* padding: 0.5rem; */
 }
 
 .month-header {
-  margin-bottom: 10px;
-  /*background: #081249;*/
+  margin-bottom: 0.55rem;
   background: linear-gradient(to right, #0a1760, #080c37);
   opacity: 0.8;
-  font-size:0.66rem;
+  font-size: 0.66rem;
+  padding: 0.5rem;
 }
 
 .month-header .el-row {
@@ -124,12 +121,23 @@ export default {
 }
 
 .month-header .el-col {
-  margin: 10px 0;
+  /* margin: 10px 0; */
   height: 100%;
+  background-color: #1c299a;
+  padding: 0.3rem;
 }
 
 .month-header:last-child {
   margin-bottom: 0;
+}
+
+.month-header:first-child {
+  text-align: left;
+  background-color: unset;
+  margin-bottom: 0;
+  font-size: 1rem;
+  padding: 0 0.3rem 0.3rem 0.3rem;
+  font-family: 'Arial, Verdana, sans-serif';font-weight: 700
 }
 
 .title {
@@ -138,9 +146,10 @@ export default {
   margin-bottom: 15px;
 }
 
-.content{
+.content {
   font-family: 'Arial, Verdana, sans-serif';
   font-weight: 600;
   color: #66ccff;
+  height: 50%;
 }
 </style>

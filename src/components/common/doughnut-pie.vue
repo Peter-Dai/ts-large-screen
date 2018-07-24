@@ -1,8 +1,9 @@
 <template>
   <div
+    v-resize-container
     ref="doughnutPie"
     class="doughnutPie"
-    resize-container>
+  >
     doughnut-pie
   </div>
 </template>
