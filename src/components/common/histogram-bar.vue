@@ -12,8 +12,7 @@ export default {
   name: 'HistogramBar',
   props: {
     options: {
-      default: () => {
-      },
+      default: () => {},
       type: Object,
     },
   },
@@ -26,7 +25,10 @@ export default {
       },
       this.options,
     );
-    const remfontSize = getComputedStyle(document.getElementsByTagName('html')[0], null)['font-size'];
+    const remfontSize = getComputedStyle(
+      document.getElementsByTagName('html')[0],
+      null,
+    )['font-size'];
     let remSize = 18;
     if (remfontSize) {
       remSize = +remfontSize.replace(/[p|x]/g, '');
@@ -42,13 +44,15 @@ export default {
         },
         padding: '100%',
       },
-      grid: [{
-        width: '90%',
-        height: '90%',
-        x: '0',
-        y: '13%',
-        containLabel: true,
-      }],
+      grid: [
+        {
+          width: '100%',
+          height: '100%',
+          x: '0',
+          y: '13%',
+          containLabel: true,
+        },
+      ],
       tooltip: {
         trigger: 'axis',
       },
@@ -60,19 +64,23 @@ export default {
       yAxis: [
         {
           type: 'category',
-          axisLabel: { // 坐标轴文本标签选项
+          axisLabel: {
+            // 坐标轴文本标签选项
             textStyle: {
               color: '#fff',
               fontSize: 0.66 * remSize,
             },
           },
-          splitLine: { // 分隔线
+          splitLine: {
+            // 分隔线
             show: false,
           },
-          axisTick: { // 坐标刻度线
+          axisTick: {
+            // 坐标刻度线
             show: false,
           },
-          axisLine: { // 坐标轴线
+          axisLine: {
+            // 坐标轴线
             show: false,
           },
           data: [],
@@ -82,7 +90,8 @@ export default {
         {
           name: '最近30天交易额',
           type: 'bar',
-          label: { // 图形上数据信息
+          label: {
+            // 图形上数据信息
             normal: {
               position: [this.$refs.histogramBar.clientWidth - (remSize * 6), -5], // 图形上数据信息的位置
               show: true,
@@ -140,9 +149,13 @@ export default {
     window.addEventListener('resize', () => {
       myChart.setOption({
         series: {
-          label: { // 图形上数据信息
+          label: {
+            // 图形上数据信息
             normal: {
-              position: [this.$refs.histogramBar.clientWidth - (remSize * 6), '-5'], // 图形上数据信息的位置
+              position: [
+                this.$refs.histogramBar.clientWidth - (remSize * 6),
+                '-5',
+              ], // 图形上数据信息的位置
             },
           },
         },

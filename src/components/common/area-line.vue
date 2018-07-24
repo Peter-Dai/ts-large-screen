@@ -28,6 +28,15 @@ export default {
     // },
   },
   mounted() {
+    const remfontSize = getComputedStyle(
+      document.getElementsByTagName('html')[0],
+      null,
+    )['font-size'];
+    let remSize = 18;
+    if (remfontSize) {
+      remSize = +remfontSize.replace(/[p|x]/g, '');
+    }
+
     const { getSources, lineColor, areaColor, title } = Object.assign(
       {},
       {
@@ -63,7 +72,7 @@ export default {
           textStyle: {
             color: '#fff',
             // fontSize: 12,
-            fontSize: '66%',
+            fontSize: 0.66 * remSize,
           },
           interval: 4,
         },
@@ -87,8 +96,7 @@ export default {
           textStyle: {
             color: '#fff',
             // fontSize: 12,
-            fontSize: '66%',
-
+            fontSize: 0.66 * remSize,
           },
         },
       },
@@ -113,10 +121,10 @@ export default {
       ],
       grid: [
         {
-          width: '90%',
-          height: '70%',
-          x: '3%',
-          y: '15%',
+          width: '100%',
+          height: '80%',
+          x: '0',
+          y: '16%',
           containLabel: true,
         },
       ],
@@ -134,9 +142,8 @@ export default {
             white: {
               color: 'rgb(255, 255, 255)',
               // padding: 0,
-              fontSize: '66%',
-              padding: [3, 10, -5, 10],
-
+              fontSize: 0.66 * remSize,
+              padding: [3, 10, -5, 0],
             },
           },
         },

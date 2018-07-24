@@ -2,44 +2,41 @@
   <el-container
     class="month-container">
     <el-header
-      style="text-align:left"
-      height="3%">
+      class="month-header"
+      height="auto"
+    >
       最近30天实时数据
     </el-header>
     <el-header
       class="month-header"
       height="auto"
-      style="text-align:left;margin-top:10px; margin-bottom:10px;">
+      style="text-align:left;">
       <el-row
         :gutter="24"
+        type="flex"
+        justify="space-around"
       >
         <el-col
-          :span="8"
+          :span="7"
         >
-          <el-card
-            class="summary-body"
-            body-style="padding: 10px;">
+          <div>
             <div class ="title">交易额</div>
             <div class ="content">￥122,123,123,213</div>
-          </el-card>
+          </div>
+
+
         </el-col>
         <el-col
-          :span="8"
+          :span="7"
         >
-          <el-card
-            class="summary-body"
-            body-style="padding: 10px;">
-            <div class ="title">订单数</div>
-            <div class ="content">122,123,123,213</div>
-          </el-card>
+
+          <div class ="title">订单数</div>
+          <div class ="content">122,123,123,213</div>
         </el-col>
-        <el-col :span="8">
-          <el-card
-            class="summary-body"
-            body-style="padding: 10px;">
-            <div class ="title">佣金</div>
-            <div class ="content">￥122,123,123,213</div>
-          </el-card>
+        <el-col :span="7">
+
+          <div class ="title">佣金</div>
+          <div class ="content">￥122,123,123,213</div>
         </el-col>
       </el-row>
 
@@ -96,21 +93,23 @@ export default {
   /* padding: 10px; */
   padding: 0;
   background-color: #1c299a;
-  border-color:#1c299a;
-  color:#ffffff;
+  border-color: #1c299a;
+  color: #ffffff;
+  height: 100%;
 }
 .month-container {
   color: #ffffff;
   height: 100%;
   /* padding-left: 6%;
   padding-top: 10px; */
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
 }
 
 .month-header {
-  margin-bottom: 10px;
+  margin-bottom: 0.55rem;
   background: #081249;
-  font-size:0.66rem;
+  font-size: 0.66rem;
+  padding: 0.5rem;
 }
 
 .month-header .el-row {
@@ -120,19 +119,32 @@ export default {
 }
 
 .month-header .el-col {
-  margin: 10px 0;
+  /* margin: 10px 0; */
   height: 100%;
+  background-color: #1c299a;
+  padding: 0.3rem;
 }
 
 .month-header:last-child {
   margin-bottom: 0;
 }
 
-.title {
-  margin-bottom: 15px;
+.month-header:first-child {
+  text-align: left;
+  background-color: unset;
+  margin-bottom: 0;
+  font-size: 1rem;
+  padding: 0 0.3rem 0.3rem 0.3rem;
 }
 
-.content{
+.title {
+  margin-bottom: 0.5rem;
+  height: 50%;
+
+}
+
+.content {
   color: #66ccff;
+  height: 50%;
 }
 </style>
