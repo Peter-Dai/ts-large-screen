@@ -84,9 +84,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .today-main {
-  /* height: 100%;
-  width: 100%; */
-  /*background-color: #060246;*/
   background: linear-gradient(to right, #061441, #05194d 50%, #061441);
   padding: 0;
 }
@@ -96,7 +93,6 @@ export default {
 }
 
 .num-div {
-  /* width: 15px; */
   font-family: 'Arial, Verdana, sans-serif';
   display: inline-block;
   background-color: #0051f8;

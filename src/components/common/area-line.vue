@@ -14,18 +14,6 @@ export default {
       default: () => {},
       type: Object,
     },
-    // sources: {
-    //   default: () => {},
-    //   type: Object,
-    // },
-    // themeColor: {
-    //   default: 'rgb(0, 107, 224)',
-    //   type: String,
-    // },
-    // titleContent: {
-    //   default: '{万元}{交易额}',
-    //   type: String,
-    // },
   },
   mounted() {
     const remfontSize = getComputedStyle(
@@ -71,8 +59,6 @@ export default {
           // 坐标轴文本标签选项
           textStyle: {
             color: '#fff',
-            // fontSize: 12,
-
             fontSize: 0.66 * remSize,
             fontFamily: 'Arial, Verdana, sans-serif',
             fontWeight: 800,
@@ -159,8 +145,6 @@ export default {
     myChart.showLoading();
     myChart.setOption(option);
 
-    // const getxAxisData = getSources; // [...sources.keys()];
-
     if (!!getSources && typeof getSources === 'function') {
       const getSourcesPromise = getSources();
       if (typeof getSourcesPromise.then === 'function') {
@@ -191,7 +175,6 @@ export default {
             });
           },
           (err) => {
-            console.log(err);
           },
         );
       }

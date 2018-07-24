@@ -19,17 +19,12 @@
         <el-col
           :span="7"
         >
-          <div>
-            <div class ="title">交易额</div>
-            <div class ="content">￥122,123,123,213</div>
-          </div>
-
-
+          <div class ="title">交易额</div>
+          <div class ="content">￥122,123,123,213</div>
         </el-col>
         <el-col
           :span="7"
         >
-
           <div class ="title">订单数</div>
           <div class ="content">122,123,123,213</div>
         </el-col>
@@ -39,7 +34,6 @@
           <div class ="content">￥122,123,123,213</div>
         </el-col>
       </el-row>
-
     </el-header>
     <!-- </el-header> -->
     <el-header
@@ -87,23 +81,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.summary-body {
-  /* background-color: aqua;
-  height: 100%; */
-  /* padding: 10px; */
-  padding: 0;
-  background: linear-gradient(to right, #031399, #071159);
-  opacity: 0.8;
-  border-color: #1c299a;
-  color: #ffffff;
-  height: 100%;
-}
 .month-container {
   color: #ffffff;
   height: 100%;
-  /* padding-left: 6%;
-  padding-top: 10px; */
-  /* padding: 0.5rem; */
 }
 
 .month-header {
@@ -121,10 +101,11 @@ export default {
 }
 
 .month-header .el-col {
-  /* margin: 10px 0; */
   height: 100%;
-  background-color: #1c299a;
   padding: 0.3rem;
+  background: linear-gradient(to right, #031399, #071159);
+  opacity: 0.8;
+  border-color: #1c299a;
 }
 
 .month-header:last-child {

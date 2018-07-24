@@ -50,12 +50,9 @@ export default {
 <style scoped>
 .top-container {
   height: 100%;
-  /* padding-left: 1%; */
-  /* padding-top: 10px; */
 }
 
 .top-header {
-  /*background: #081249;*/
   margin-bottom: 0.5rem;
   padding: 0.3rem;
   background: linear-gradient(to right, #080b37, #0a155a);
@@ -63,7 +60,6 @@ export default {
 }
 
 .top-header:last-child {
-  /* padding: 0 2%; */
   padding: 0;
 }
 </style>

@@ -28,12 +28,6 @@ Vue.directive('resize-container', {
     // 设置容器高宽
     resizeChartContainer(el);
 
-    // window.onresize = () => {
-    //   console.log('this is directive');
-    //   resizeWorldMapContainer(el);
-    // myChart.resize();
-    // };
-
     window.addEventListener('resize', () => {
       resizeChartContainer(el);
     });

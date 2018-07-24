@@ -91,9 +91,6 @@ export default {
     myChart.showLoading();
 
     transactionApi.retrieveDailyTransaction().then((responce) => {
-      // const data1 = data;
-      // console.log(data1);
-
       const ignore = {
         name: '南海诸岛',
         value: 0,
@@ -118,7 +115,6 @@ export default {
         ],
       });
     }, (err) => {
-      console.log(err);
     });
 
     this.autoShowTooltip(myChart);
