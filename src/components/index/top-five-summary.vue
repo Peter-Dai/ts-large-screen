@@ -56,10 +56,13 @@ export default {
 
 .top-header {
   margin-bottom: 10px;
-  background: #081249;
+  /*background: #081249;*/
+  background: linear-gradient(to right, #080b37, #0a155a);
+  opacity: 0.8;
 }
 
 .top-header:last-child {
   padding: 0 2%;
+  background: #0b1254;
 }
 </style>
