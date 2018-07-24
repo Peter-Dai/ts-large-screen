@@ -33,6 +33,8 @@ export default {
         textStyle: {
           color: '#fff',
           fontSize: '100%',
+          fontFamily: 'Arial, Verdana, sans-serif',
+          fontWeight: 700,
         },
         padding: '100%',
       },
@@ -58,6 +60,8 @@ export default {
             textStyle: {
               color: '#fff',
               fontSize: '60%',
+              fontFamily: 'Arial, Verdana, sans-serif',
+              fontWeight: 800,
             },
           },
           splitLine: { // 分隔线
