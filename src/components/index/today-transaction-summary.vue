@@ -86,7 +86,8 @@ export default {
 .today-main {
   /* height: 100%;
   width: 100%; */
-  background-color: #060246;
+  /*background-color: #060246;*/
+  background: linear-gradient(to right, #061441, #05194d 50%, #061441);
   padding: 0;
 }
 

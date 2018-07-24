@@ -66,15 +66,18 @@ export default {
 }
 
 .left-aside {
-  background-color: #080b37;
+  /*background-color: #070925;*/
+  background: linear-gradient(to right, #070925, #061542);
 }
 
 .main {
-  background-color: #060246;
+  /*background-color: #060246;*/
+  background: linear-gradient(to right, #061542, #051a51 50%, #061542);
 }
 
 .right-aside {
-  background-color:#060246;;
+  /*background-color: #070925;*/
+  background: linear-gradient(to right, #061542, #070925);
 }
 
 

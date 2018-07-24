@@ -95,7 +95,9 @@ export default {
   height: 100%; */
   /* padding: 10px; */
   padding: 0;
-  background-color: #1c299a;
+  /*background-color: #1c299a;*/
+  background: linear-gradient(to right, #031399, #071159);
+  opacity: 0.8;
   border-color:#1c299a;
   color:#ffffff;
 }
@@ -109,7 +111,9 @@ export default {
 
 .month-header {
   margin-bottom: 10px;
-  background: #081249;
+  /*background: #081249;*/
+  background: linear-gradient(to right, #0a1760, #080c37);
+  opacity: 0.8;
   font-size:0.66rem;
 }
 
