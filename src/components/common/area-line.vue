@@ -63,6 +63,8 @@ export default {
             color: '#fff',
             // fontSize: 12,
             fontSize: '66%',
+            fontFamily: 'Arial, Verdana, sans-serif',
+            fontWeight: 800,
           },
           interval: 4,
         },
@@ -87,6 +89,8 @@ export default {
             color: '#fff',
             // fontSize: 12,
             fontSize: '66%',
+            fontFamily: 'Arial, Verdana, sans-serif',
+            fontWeight: 800,
 
           },
         },
@@ -123,6 +127,8 @@ export default {
         text: `{white|单位：${titles[0]}} {blue|———} {white|${titles[1]}}`,
         // top: '5px',
         textStyle: {
+          fontFamily: 'Arial, Verdana, sans-serif',
+          fontWeight: 800,
           rich: {
             blue: {
               color: lineColor, // 'rgb(0, 107, 224)',

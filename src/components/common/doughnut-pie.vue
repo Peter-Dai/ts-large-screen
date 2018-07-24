@@ -63,6 +63,7 @@ export default {
               label: { // 引导线文字样式
                 show: true,
                 fontSize: '60%',
+                fontFamily: 'Arial, Verdana, sans-serif',
                 formatter: '{b} {d}%', // 格式化引导线文字样式
               },
               labelLine: { // 引导线样式
@@ -84,6 +85,7 @@ export default {
               label: { // 引导线文字样式
                 show: true,
                 fontSize: '60%',
+                fontFamily: 'Arial, Verdana, sans-serif',
                 formatter: '{b} {d}%', // 格式化引导线文字样式
               },
               labelLine: { // 引导线样式

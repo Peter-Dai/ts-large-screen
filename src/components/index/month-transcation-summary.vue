@@ -2,7 +2,7 @@
   <el-container
     class="month-container">
     <el-header
-      style="text-align:left"
+      style="text-align:left;font-family: 'Arial, Verdana, sans-serif';font-weight: 700"
       height="3%">
       最近30天实时数据
     </el-header>
@@ -129,10 +129,14 @@ export default {
 }
 
 .title {
+  font-family: 'Arial, Verdana, sans-serif';
+  font-weight: 800;
   margin-bottom: 15px;
 }
 
 .content{
+  font-family: 'Arial, Verdana, sans-serif';
+  font-weight: 600;
   color: #66ccff;
 }
 </style>

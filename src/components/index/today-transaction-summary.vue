@@ -96,6 +96,7 @@ export default {
 
 .num-div {
   /* width: 15px; */
+  font-family: 'Arial, Verdana, sans-serif';
   display: inline-block;
   background-color: #0051f8;
   color: #ffffff;
@@ -104,6 +105,8 @@ export default {
 }
 
 .header-title{
+  font-family: 'Arial, Verdana, sans-serif';
+  font-weight: 700;
   margin-bottom:  20px;
 }
 
