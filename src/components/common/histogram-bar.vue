@@ -113,7 +113,14 @@ export default {
           },
           itemStyle: {
             normal: {
-              color: '#0f35ff',
+              color: new this.$echarts.graphic.LinearGradient(
+                0, 0, 1, 0, // 配置渐变色的起止位置右/下/左/上，此处设置从左开始渐变
+                [
+                  { offset: 0, color: '#0f35ff' }, // offset表示位置，范围0-1
+                  { offset: 0.5, color: '#0f35ff' },
+                  { offset: 1, color: '#009ef5' },
+                ],
+              ),
             },
           },
           barWidth: 0.5 * remSize,
