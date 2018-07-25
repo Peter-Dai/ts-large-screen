@@ -108,7 +108,7 @@ export default {
       ],
       grid: [
         {
-          width: '100%',
+          width: '98%',
           height: '80%',
           x: '0',
           y: '20%',
