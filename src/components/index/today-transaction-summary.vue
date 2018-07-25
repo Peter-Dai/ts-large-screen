@@ -10,12 +10,11 @@
           <div class="header-title">今日成交笔数</div>
           <div>
             <template
-              v-for="(value,index) in renderCountArray()">
+              v-for="(value,index) in renderDisplayNumber(counts)">
               <div
                 v-if="value !=','"
                 :key="index"
                 class="num-div">{{ value }}</div>
-
               <template v-else>,</template>
             </template>
           </div>
@@ -25,12 +24,11 @@
           <div>
             ￥
             <template
-              v-for="(value,index) in renderCountArray()">
+              v-for="(value,index) in renderDisplayNumber(amounts)">
               <div
                 v-if="value !=','"
                 :key="index"
                 class="num-div">{{ value }}</div>
-
               <template v-else>,</template>
             </template>
           </div>
@@ -56,7 +54,7 @@ export default {
   data() {
     return {
       counts: '1',
-      amounts: '2',
+      amounts: '10',
       mapOptions: {
         getSources: transactionApi.retrieveDailyTransaction,
       },
@@ -70,15 +68,9 @@ export default {
     }, 300);
   },
   methods: {
-    renderCountArray() {
-      if (!isNaN(this.counts)) {
-        return this.counts.replace(/\d{1,3}(?=(\d{3})+$)/g, '$&,').split('');
-      }
-      return [];
-    },
-    renderAmountArray() {
-      if (!isNaN(this.amounts)) {
-        return this.amounts.replace(/\d{1,3}(?=(\d{3})+$)/g, '$&,').split('');
+    renderDisplayNumber(value) {
+      if (!!value && !isNaN(value)) {
+        return value.replace(/\d{1,3}(?=(\d{3})+$)/g, '$&,').split('');
       }
       return [];
     },
