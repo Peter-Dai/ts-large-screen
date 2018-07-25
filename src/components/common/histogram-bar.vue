@@ -103,10 +103,7 @@ export default {
               color: '#fff',
               formatter(data) { // 图形上数据信息格式化
                 const template = data.data;
-                if (type === 'amount') {
-                  return `${template}万元`;
-                }
-                return `${template}万笔`;
+                return `${template}万${type === 'amount' ? '元' : '笔'}`;
               },
               fontSize: 0.66 * remSize,
             },
