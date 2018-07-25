@@ -7,6 +7,9 @@
 </template>
 
 <script>
+import helper from '@/utils/helper';
+
+
 export default {
   name: 'AreaLine',
   props: {
@@ -16,14 +19,7 @@ export default {
     },
   },
   mounted() {
-    const remfontSize = getComputedStyle(
-      document.getElementsByTagName('html')[0],
-      null,
-    )['font-size'];
-    let remSize = 18;
-    if (remfontSize) {
-      remSize = +remfontSize.replace(/[p|x]/g, '');
-    }
+    const remSize = helper.getRemSize();
 
     const { getSources, lineColor, areaColor, title } = Object.assign(
       {},
