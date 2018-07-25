@@ -8,16 +8,25 @@
 <script>
 import 'echarts/map/js/china';
 
-import transactionApi from '@/api/transaction';
+// import transactionApi from '@/api/transaction';
 
 export default {
   name: 'DomesticMap',
-  data() {
-    return {
-      msg: '',
-    };
+  props: {
+    options: {
+      default: () => {},
+      type: Object,
+    },
   },
   mounted() {
+    const { getSources } = Object.assign(
+      {},
+      {
+        getSources: null,
+      },
+      this.options,
+    );
+
     const myChart = this.$echarts.init(this.$refs.domesticMap);
     const option = {
       tooltip: {
@@ -28,7 +37,7 @@ export default {
         formatter(params) {
           return `<div style="padding:5px;text-align:left;font-size:0.66rem;">
                     <div style ='line-height: initial;'>
-                      <span style="font-size:0.77rem" >${params.name}省</span>
+                      <span style="font-size:0.77rem" >${params.name}</span>
                     </div>
                     <div style ='line-height: initial;'>
                       <span >交易金额:</span><span style='color:#ffff3b;font-size:0.77rem'>
@@ -90,32 +99,37 @@ export default {
     myChart.setOption(option);
     myChart.showLoading();
 
-    transactionApi.retrieveDailyTransaction().then((responce) => {
-      const ignore = {
-        name: '南海诸岛',
-        value: 0,
-        itemStyle: {
-          normal: {
-            opacity: 0,
-            label: { show: false },
-          },
-        },
-      };
+    if (!!getSources && typeof getSources === 'function') {
+      const getSourcesPromise = getSources();
+      if (typeof getSourcesPromise.then === 'function') {
+        getSourcesPromise.then((responce) => {
+          const ignore = {
+            name: '南海诸岛',
+            value: 0,
+            itemStyle: {
+              normal: {
+                opacity: 0,
+                label: { show: false },
+              },
+            },
+          };
 
-      responce.push(ignore);
+          responce.push(ignore);
 
-      myChart.hideLoading(); // 隐藏加载动画
-      myChart.setOption({
-        // 加载数据图表
-        series: [
-          {
-            // 根据名字对应到相应的系列
-            data: responce,
-          },
-        ],
-      });
-    }, (err) => {
-    });
+          myChart.hideLoading(); // 隐藏加载动画
+          myChart.setOption({
+            // 加载数据图表
+            series: [
+              {
+                // 根据名字对应到相应的系列
+                data: responce,
+              },
+            ],
+          });
+        }, (err) => {
+        });
+      }
+    }
 
     this.autoShowTooltip(myChart);
 

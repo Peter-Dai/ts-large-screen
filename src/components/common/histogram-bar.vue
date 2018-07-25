@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import helper from '@/utils/helper';
+
 export default {
   name: 'HistogramBar',
   props: {
@@ -25,14 +27,8 @@ export default {
       },
       this.options,
     );
-    const remfontSize = getComputedStyle(
-      document.getElementsByTagName('html')[0],
-      null,
-    )['font-size'];
-    let remSize = 18;
-    if (remfontSize) {
-      remSize = +remfontSize.replace(/[p|x]/g, '');
-    }
+
+    const remSize = helper.getRemSize();
 
     const myChart = this.$echarts.init(this.$refs.histogramBar);
     const option = {

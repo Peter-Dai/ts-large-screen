@@ -38,12 +38,14 @@
       </el-row>
     </el-header>
     <el-main class="today-main">
-      <DomesticMap/>
+      <DomesticMap :options ="mapOptions"/>
     </el-main>
   </el-container>
 </template>
 
 <script>
+
+import transactionApi from '@/api/transaction';
 import DomesticMap from '../common/domestic-map';
 
 export default {
@@ -55,6 +57,9 @@ export default {
     return {
       counts: '1',
       amounts: '2',
+      mapOptions: {
+        getSources: transactionApi.retrieveDailyTransaction,
+      },
     };
   },
 
