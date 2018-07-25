@@ -15,6 +15,10 @@ export default {
       default: () => {},
       type: Object,
     },
+    type: {
+      default: 'amount',
+      type: String,
+    },
   },
   mounted() {
     const { getSources, title } = Object.assign(
@@ -25,6 +29,7 @@ export default {
       },
       this.options,
     );
+    const type = this.type;
     const remfontSize = getComputedStyle(
       document.getElementsByTagName('html')[0],
       null,
@@ -100,7 +105,13 @@ export default {
               position: [this.$refs.histogramBar.clientWidth - (remSize * 6), -5], // 图形上数据信息的位置
               show: true,
               color: '#fff',
-              formatter: '{c}万元', // 图形上数据信息格式化
+              formatter(data) { // 图形上数据信息格式化
+                const template = data.data;
+                if (type === 'amount') {
+                  return `${template}万元`;
+                }
+                return `${template}万笔`;
+              },
               fontSize: 0.66 * remSize,
             },
           },

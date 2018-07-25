@@ -4,12 +4,16 @@
     <el-header
       height="35%"
       class="top-header">
-      <histogramBar :options ="transactionAmountOption"/>
+      <histogramBar
+        type ="amount"
+        :options ="transactionAmountOption"/>
     </el-header>
     <el-header
       height="35%"
       class="top-header">
-      <histogramBar :options ="transactionNumberOption"/>
+      <histogramBar
+        type ="number"
+        :options ="transactionNumberOption"/>
     </el-header>
     <el-header
       height="25%"
