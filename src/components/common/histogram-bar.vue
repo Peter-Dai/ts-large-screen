@@ -49,7 +49,7 @@ export default {
       },
       grid: [
         {
-          width: '100%',
+          width: this.$refs.histogramBar.clientWidth - (remSize * 2),
           height: '93%',
           x: '0',
           y: '13%',
@@ -162,6 +162,11 @@ export default {
     // 自适应
     window.addEventListener('resize', () => {
       myChart.setOption({
+        grid: [
+          {
+            width: this.$refs.histogramBar.clientWidth - (remSize * 2),
+          },
+        ],
         series: {
           label: {
             // 图形上数据信息

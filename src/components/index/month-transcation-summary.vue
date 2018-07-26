@@ -8,7 +8,7 @@
       最近30天实时数据
     </el-header>
     <el-header
-      class="month-header"
+      class="month-header top-radius"
       height="auto"
       style="text-align:left;">
       <el-row
@@ -89,9 +89,21 @@ export default {
 .month-header {
   margin-bottom: 0.55rem;
   background: linear-gradient(to right, #0a1760, #080c37);
+  border-radius: 5px;
+  box-shadow: 2px 2px 1px #0a155a;
   opacity: 0.8;
   font-size: 0.66rem;
   padding: 0.5rem;
+}
+
+.month-header:first-child {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.top-radius {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .month-header .el-row {
