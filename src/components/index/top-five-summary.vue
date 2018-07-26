@@ -59,11 +59,15 @@ export default {
 .top-header {
   margin-bottom: 0.5rem;
   padding: 0.3rem;
-  background: linear-gradient(to right, #080b37, #0a155a);
+  /*background: linear-gradient(to right, #080b37, #0a155a 70%, #080b37);*/
+  background: linear-gradient(to bottom, #080b37, #0a155a 70%, #080b37);
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px #0a155a;
   opacity: 0.8;
 }
 
 .top-header:last-child {
   padding: 0;
+  background: linear-gradient(to right, #0b1152, #081248);
 }
 </style>
