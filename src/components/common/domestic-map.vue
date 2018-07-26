@@ -38,7 +38,7 @@ export default {
         trigger: 'item',
         showDelay: 0,
         transitionDuration: 0.2,
-
+        backgroundColor: 'rgba(54, 72, 153, 0.8)',
         formatter(params) {
           return `<div style="padding:5px;text-align:left;font-size:0.66rem;">
                     <div style ='line-height: initial;'>
