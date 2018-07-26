@@ -73,7 +73,7 @@ export default {
               color: '#fff',
               fontSize: 0.66 * remSize,
               fontFamily: 'Arial, Verdana, sans-serif',
-              fontWeight: 800,
+              fontWeight: 500,
             },
           },
           splitLine: {
