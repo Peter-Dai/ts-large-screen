@@ -6,6 +6,9 @@
 </template>
 
 <script>
+
+import helper from '@/utils/helper';
+import mapMarked from '@/assets/map-marked.svg';
 import 'echarts/map/js/china';
 
 // import transactionApi from '@/api/transaction';
@@ -19,6 +22,8 @@ export default {
     },
   },
   mounted() {
+    const remSize = helper.getRemSize();
+
     const { getSources } = Object.assign(
       {},
       {
@@ -50,7 +55,8 @@ export default {
                         ${params.data.orders}
                       </span>
                     </div>
-                  </div>`;
+                  </div>
+                  `;
         },
       },
       series: [
@@ -64,8 +70,18 @@ export default {
             },
             emphasis: {
               // 对应的鼠标悬浮效果
-              show: false,
-              textStyle: { color: '#800080' },
+              show: true,
+              formatter(params) {
+                return '{marked|}';
+              },
+              rich: {
+                marked: {
+                  backgroundColor: {
+                    image: mapMarked,
+                  },
+                  height: remSize / 2,
+                },
+              },
             },
           },
           itemStyle: {
