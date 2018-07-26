@@ -90,7 +90,7 @@ export default {
   margin-bottom: 0.55rem;
   background: linear-gradient(to right, #0a1760, #080c37);
   border-radius: 5px;
-  box-shadow: 1px 1px 2px #0a155a;
+  box-shadow: 2px 2px 1px #0a155a;
   opacity: 0.8;
   font-size: 0.66rem;
   padding: 0.5rem;

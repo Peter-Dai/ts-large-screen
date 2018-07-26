@@ -62,7 +62,7 @@ export default {
   /*background: linear-gradient(to right, #080b37, #0a155a 70%, #080b37);*/
   background: linear-gradient(to bottom, #080b37, #0a155a 70%, #080b37);
   border-radius: 5px;
-  box-shadow: 1px 1px 2px #0a155a;
+  box-shadow: 2px 2px 1px #0a155a;
   opacity: 0.8;
 }
 
