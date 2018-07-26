@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import helper from '@/utils/helper';
+
 export default {
   name: 'DoughnutPie',
   props: {
@@ -19,6 +21,7 @@ export default {
     },
   },
   mounted() {
+    const remSize = helper.getRemSize();
     const { getSources, title } = Object.assign(
       {},
       {
@@ -27,6 +30,14 @@ export default {
       },
       this.options,
     );
+    const colorArray = [
+      { normal: { color: '#0068ed' } },
+      { normal: { color: '#efef50' } },
+      { normal: { color: '#00b674' } },
+      { normal: { color: '#efaa20' } },
+      { normal: { color: '#f7461c' } },
+      { normal: { color: '#008bfb' } },
+    ];
     const myChart = this.$echarts.init(this.$refs.doughnutPie);
     const option = {
       title: [ // 设置两个title
@@ -112,6 +123,14 @@ export default {
             if (!!responce && responce instanceof Array) {
               tempPaymentMethod = responce[0];
               tempPaymentTerminal = responce[1];
+              tempPaymentMethod.forEach((item, i) => {
+                const addStyle = item;
+                addStyle.itemStyle = colorArray[i];
+              });
+              tempPaymentTerminal.forEach((item, i) => {
+                const addStyle = item;
+                addStyle.itemStyle = colorArray[i];
+              });
             }
             myChart.hideLoading(); // 隐藏加载动画
 
