@@ -43,16 +43,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.container{
-  /* width: 1920px;
-  height: 270px; */
 
-   width: 2844.44 px;
-  height: 400px;
-
-   /* width: 15360px;
-  height: 2160px; */
-}
 
 .left-aside {
   background: linear-gradient(to right, #070925, #061542);
