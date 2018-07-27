@@ -12,6 +12,15 @@ const helper = {
 
     return remSize;
   },
+  isPromissFn(target) {
+    if (!!target && typeof target === 'function') {
+      const getTargetPromise = target();
+      if (typeof getTargetPromise.then === 'function') {
+        return getTargetPromise;
+      }
+    }
+    return null;
+  },
 };
 
 export default helper;

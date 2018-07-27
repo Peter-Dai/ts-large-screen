@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import _ from 'lodash';
 import helper from '@/utils/helper';
 
 export default {
@@ -23,7 +24,9 @@ export default {
     },
   },
   mounted() {
-    const { getSources, title } = Object.assign(
+    let { isPromissFn } = helper;
+    let currentElem = this.$refs.histogramBar;
+    let { getSources, title } = Object.assign(
       {},
       {
         getSources: null,
@@ -35,8 +38,8 @@ export default {
     const remSize = helper.getRemSize();
     const type = this.type;
 
-    const myChart = this.$echarts.init(this.$refs.histogramBar);
-    const option = {
+    const myChart = this.$echarts.init(currentElem);
+    const baseOption = {
       title: {
         text: title,
         textStyle: {
@@ -49,7 +52,7 @@ export default {
       },
       grid: [
         {
-          width: this.$refs.histogramBar.clientWidth - (remSize * 2),
+          // width: this.$refs.histogramBar.clientWidth - (remSize * 2),
           height: '93%',
           x: '0',
           y: '13%',
@@ -71,7 +74,7 @@ export default {
             // 坐标轴文本标签选项
             textStyle: {
               color: '#fff',
-              fontSize: 0.66 * remSize,
+              // fontSize: 0.66 * remSize,
               fontFamily: 'Arial, Verdana, sans-serif',
               fontWeight: 500,
             },
@@ -98,14 +101,14 @@ export default {
           label: {
             // 图形上数据信息
             normal: {
-              position: [this.$refs.histogramBar.clientWidth - (remSize * 6), -5], // 图形上数据信息的位置
+              // position: [this.$refs.histogramBar.clientWidth - (remSize * 6), -5], // 图形上数据信息的位置
               show: true,
               color: '#fff',
               formatter(data) { // 图形上数据信息格式化
                 const template = data.data;
                 return `${template}万${type === 'amount' ? '元' : '笔'}`;
               },
-              fontSize: 0.66 * remSize,
+              // fontSize: 0.66 * remSize,
             },
           },
           itemStyle: {
@@ -120,65 +123,77 @@ export default {
               ),
             },
           },
-          barWidth: 0.5 * remSize,
+          // barWidth: 0.5 * remSize,
           data: [],
         },
       ],
     };
     myChart.showLoading();
-    myChart.setOption(option);
-    // 接口数据
-    if (!!getSources && typeof getSources === 'function') {
-      const getSourcesPromise = getSources();
-      if (typeof getSourcesPromise.then === 'function') {
-        getSourcesPromise.then(
-          (responce) => {
-            let getyAxisData;
-            let tempData;
-            if (!!responce && responce instanceof Array) {
-              getyAxisData = responce.map(i => i.name);
+    // myChart.setOption(option);
 
-              tempData = responce.map(i => i.value);
-            }
-            myChart.hideLoading(); // 隐藏加载动画
-            myChart.setOption({
-              // 加载数据图表
-              yAxis: {
-                data: getyAxisData,
-              },
-              series: [
-                {
-                  // 根据名字对应到相应的系列
-                  data: tempData,
-                },
-              ],
-            });
-          },
-          (err) => {
-          },
-        );
-      }
-    }
-    // 自适应
-    window.addEventListener('resize', () => {
-      myChart.setOption({
+    let getResizeOption = () => {
+      const remSizeTemp = helper.getRemSize();
+
+      return {
         grid: [
           {
-            width: this.$refs.histogramBar.clientWidth - (remSize * 2),
+            width: currentElem.clientWidth - (remSizeTemp * 2),
           },
         ],
-        series: {
-          label: {
-            // 图形上数据信息
-            normal: {
-              position: [
-                this.$refs.histogramBar.clientWidth - (remSize * 6),
-                '-5',
-              ], // 图形上数据信息的位置
+        yAxis: [
+          {
+            axisLabel: {
+              textStyle: {
+                fontSize: 0.66 * remSizeTemp,
+              },
             },
           },
-        },
+        ],
+        series: [
+          {
+            label: {
+            // 图形上数据信息
+              normal: {
+                position: [currentElem.clientWidth - (remSizeTemp * 6), -5],
+                fontSize: 0.66 * remSizeTemp,
+              },
+            },
+            barWidth: 0.5 * remSizeTemp,
+          },
+        ],
+      };
+    };
+
+    let asynFn = isPromissFn(getSources);
+    if (asynFn) {
+      asynFn.then((responce) => {
+        let getyAxisData;
+        let tempData;
+        if (!!responce && responce instanceof Array) {
+          getyAxisData = responce.map(i => i.name);
+          tempData = responce.map(i => i.value);
+        }
+        myChart.hideLoading(); // 隐藏加载动画
+        myChart.setOption(_.merge({}, baseOption, getResizeOption(), {
+          // 加载数据图表
+          yAxis: [{
+            data: getyAxisData,
+          }],
+          series: [
+            {
+              // 根据名字对应到相应的系列
+              data: tempData,
+            },
+          ],
+        }));
+      },
+      (err) => {
       });
+    }
+
+    // 自适应
+    window.addEventListener('resize', () => {
+      myChart.setOption(getResizeOption());
       myChart.resize();
     });
   },

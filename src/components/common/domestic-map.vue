@@ -10,8 +10,7 @@
 import helper from '@/utils/helper';
 import mapMarked from '@/assets/map-marked.svg';
 import 'echarts/map/js/china';
-
-// import transactionApi from '@/api/transaction';
+import _ from 'lodash';
 
 export default {
   name: 'DomesticMap',
@@ -22,9 +21,9 @@ export default {
     },
   },
   mounted() {
-    const remSize = helper.getRemSize();
+    let { isPromissFn } = helper;
 
-    const { getSources } = Object.assign(
+    let { getSources } = Object.assign(
       {},
       {
         getSources: null,
@@ -32,8 +31,8 @@ export default {
       this.options,
     );
 
-    const myChart = this.$echarts.init(this.$refs.domesticMap);
-    const option = {
+    let myChart = this.$echarts.init(this.$refs.domesticMap);
+    const baseOption = {
       tooltip: {
         trigger: 'item',
         showDelay: 0,
@@ -79,7 +78,7 @@ export default {
                   backgroundColor: {
                     image: mapMarked,
                   },
-                  height: remSize / 2,
+                  // height: 根据rem重新计算,
                 },
               },
             },
@@ -96,30 +95,38 @@ export default {
               areaColor: '#006be0',
             },
           },
-          data: [
-            {
-              name: '南海诸岛',
-              value: 0,
-              itemStyle: {
-                normal: {
-                  opacity: 0,
-                  label: { show: false },
-                },
-              },
-            },
-          ],
+          data: [],
         },
       ],
     };
 
-    myChart.setOption(option);
+    let getResizeOption = () => {
+      const remSizeTemp = helper.getRemSize();
+
+      return {
+        series: [
+          {
+            label: {
+              emphasis: {
+                rich: {
+                  marked: {
+                    height: remSizeTemp / 2,
+                  },
+                },
+              },
+            },
+          },
+        ],
+      };
+    };
+
     myChart.showLoading();
 
-    if (!!getSources && typeof getSources === 'function') {
-      const getSourcesPromise = getSources();
-      if (typeof getSourcesPromise.then === 'function') {
-        getSourcesPromise.then((responce) => {
-          const ignore = {
+    let asynFn = isPromissFn(getSources);
+    if (asynFn) {
+      asynFn.then(
+        (responce) => {
+          let ignore = {
             name: '南海诸岛',
             value: 0,
             itemStyle: {
@@ -133,23 +140,25 @@ export default {
           responce.push(ignore);
 
           myChart.hideLoading(); // 隐藏加载动画
-          myChart.setOption({
-            // 加载数据图表
-            series: [
-              {
-                // 根据名字对应到相应的系列
-                data: responce,
-              },
-            ],
-          });
-        }, (err) => {
-        });
-      }
+          myChart.setOption(
+            _.merge({}, baseOption, getResizeOption(), {
+              // 加载数据图表
+              series: [
+                {
+                  // 根据名字对应到相应的系列
+                  data: responce,
+                },
+              ],
+            }),
+          );
+          this.autoShowTooltip(myChart);
+        },
+        (err) => {},
+      );
     }
 
-    this.autoShowTooltip(myChart);
-
     window.addEventListener('resize', () => {
+      myChart.setOption(getResizeOption());
       myChart.resize();
     });
   },

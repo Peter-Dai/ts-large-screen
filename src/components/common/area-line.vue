@@ -8,7 +8,7 @@
 
 <script>
 import helper from '@/utils/helper';
-
+import _ from 'lodash';
 
 export default {
   name: 'AreaLine',
@@ -19,9 +19,7 @@ export default {
     },
   },
   mounted() {
-    const remSize = helper.getRemSize();
-
-    const { getSources, lineColor, areaColor, title } = Object.assign(
+    let { getSources, lineColor, areaColor, title } = Object.assign(
       {},
       {
         getSources: null,
@@ -32,10 +30,13 @@ export default {
       this.options,
     );
 
+    let { isPromissFn } = helper;
+
     const titles = title.split('-');
 
     const myChart = this.$echarts.init(this.$refs.areaLine);
-    const option = {
+    // 设置默认配置
+    const baseOption = {
       xAxis: {
         type: 'category',
         boundaryGap: false,
@@ -55,7 +56,7 @@ export default {
           // 坐标轴文本标签选项
           textStyle: {
             color: '#fff',
-            fontSize: 0.66 * remSize,
+            // fontSize: 根据rem重新计算,
             fontFamily: 'Arial, Verdana, sans-serif',
             fontWeight: 500,
           },
@@ -80,8 +81,7 @@ export default {
           // 坐标轴文本标签选项
           textStyle: {
             color: '#fff',
-            // fontSize: 12,
-            fontSize: 0.66 * remSize,
+            // fontSize: 根据rem重新计算,
             fontFamily: 'Arial, Verdana, sans-serif',
             fontWeight: 500,
           },
@@ -117,7 +117,6 @@ export default {
       ],
       title: {
         text: `{white|单位：${titles[0]}} {blue|———} {white|${titles[1]}}`,
-        // top: '5px',
         textStyle: {
           fontFamily: 'Arial, Verdana, sans-serif',
           fontWeight: 800,
@@ -126,57 +125,87 @@ export default {
               color: lineColor, // 'rgb(0, 107, 224)',
               lineHeight: 10,
               padding: [3, 10, -5, 10],
-              // fontSize: '66%',
+              // fontSize: 根据rem重新计算,
             },
             white: {
               color: 'rgb(255, 255, 255)',
-              // padding: 0,
-              fontSize: 0.66 * remSize,
+              // fontSize: 根据rem重新计算,
               padding: [3, 10, -5, 0],
             },
           },
         },
       },
     };
-    myChart.showLoading();
-    myChart.setOption(option);
+    // 返回需动态计算属性配置
+    let getResizeOption = () => {
+      const remSizeTemp = helper.getRemSize();
 
-    if (!!getSources && typeof getSources === 'function') {
-      const getSourcesPromise = getSources();
-      if (typeof getSourcesPromise.then === 'function') {
-        getSourcesPromise.then(
-          (responce) => {
-            let getxAxisData;
-            let tempData;
-            if (!!responce && responce instanceof Array) {
-              getxAxisData = [...responce.keys()].map(i => i + 1);
-              getxAxisData.unshift(0);
-
-              tempData = responce.map(i => i.amount);
-              tempData.unshift('');
-            }
-            myChart.hideLoading(); // 隐藏加载动画
-
-            myChart.setOption({
-              // 加载数据图表
-              xAxis: {
-                data: getxAxisData,
+      return {
+      // 加载数据图表
+        xAxis: {
+          axisLabel: {
+          // 坐标轴文本标签选项
+            textStyle: {
+              fontSize: 0.66 * remSizeTemp,
+            },
+          },
+        },
+        yAxis: {
+          axisLabel: {
+          // 坐标轴文本标签选项
+            textStyle: {
+              fontSize: 0.66 * remSizeTemp,
+            },
+          },
+        },
+        title: {
+          textStyle: {
+            rich: {
+              white: {
+                fontSize: 0.66 * remSizeTemp,
               },
-              series: [
-                {
-                  // 根据名字对应到相应的系列
-                  data: tempData,
-                },
-              ],
-            });
+            },
           },
-          (err) => {
+        },
+      };
+    };
+    // 显示加载动画
+    myChart.showLoading();
+
+    // 检查getSources属性
+    let asynFn = isPromissFn(getSources);
+    if (asynFn) {
+      asynFn.then((responce) => {
+        let getxAxisData;
+        let tempData;
+        if (!!responce && responce instanceof Array) {
+          // 计算X轴刻度
+          getxAxisData = [...responce.keys()].map(i => i + 1);
+          getxAxisData.unshift(0);
+          // 计算Y轴数据
+          tempData = responce.map(i => i.amount);
+          tempData.unshift('');
+        }
+        myChart.hideLoading(); // 隐藏加载动画
+        // 合并默认配置、动态计算属性和数据属性
+        myChart.setOption(_.merge({}, baseOption, getResizeOption(), {
+          xAxis: {
+            data: getxAxisData,
           },
-        );
-      }
+          series: [
+            {
+              data: tempData,
+            },
+          ],
+        }));
+      },
+      (err) => {
+      });
     }
 
     window.addEventListener('resize', () => {
+      // 重新计算动态属性
+      myChart.setOption(getResizeOption());
       myChart.resize();
     });
   },
