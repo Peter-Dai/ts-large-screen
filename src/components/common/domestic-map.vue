@@ -21,7 +21,7 @@ export default {
     },
   },
   mounted() {
-    let { isPromissFn } = helper;
+    let { isPromissFn, handleException } = helper;
 
     let { getSources } = Object.assign(
       {},
@@ -152,9 +152,9 @@ export default {
             }),
           );
           this.autoShowTooltip(myChart);
-        },
-        (err) => {},
-      );
+        }).catch((err) => {
+        handleException(baseOption, myChart);
+      });
     }
 
     window.addEventListener('resize', () => {

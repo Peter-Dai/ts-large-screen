@@ -9,17 +9,17 @@ httpService.interceptors.request.use(config =>
   // helper.showLoading();
   // config.headers['X-Token'] = anthService.getToken()
   config
-  , (err) => {
+  , err =>
   // helper.closeLoading();
-  Promise.reject(err);
-});
+  Promise.reject(err),
+);
 
 httpService.interceptors.response.use(response =>
   // helper.closeLoading();
   response.data
-  , (err) => {
+  , err =>
   // helper.closeLoading();
-  Promise.reject(err);
-});
+  Promise.reject(err),
+);
 
 export default httpService;

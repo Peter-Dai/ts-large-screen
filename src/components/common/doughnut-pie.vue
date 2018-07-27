@@ -22,7 +22,7 @@ export default {
     },
   },
   mounted() {
-    let { isPromissFn } = helper;
+    let { isPromissFn, handleException } = helper;
     const { getSources, title } = Object.assign(
       {},
       {
@@ -184,19 +184,11 @@ export default {
             },
           ],
         }));
-      },
-      (err) => {
+      }).catch((err) => {
+        handleException(baseOption, myChart);
       });
     }
 
-    // if (!!getSources && typeof getSources === 'function') {
-    //   const getSourcesPromise = getSources();
-    //   if (typeof getSourcesPromise.then === 'function') {
-    //     getSourcesPromise.then(
-
-    //     );
-    //   }
-    // }
     window.addEventListener('resize', () => {
       myChart.setOption(getResizeOption());
       myChart.resize();

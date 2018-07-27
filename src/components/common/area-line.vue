@@ -30,7 +30,7 @@ export default {
       this.options,
     );
 
-    let { isPromissFn } = helper;
+    let { isPromissFn, handleException } = helper;
 
     const titles = title.split('-');
 
@@ -89,7 +89,7 @@ export default {
       },
       series: [
         {
-          data: ['', 400, 2, 3, 4, 5, 6, 99, 23, 234, 324, 343], // CONFIG
+          data: [], // CONFIG
           type: 'line',
           areaStyle: {
             normal: {
@@ -198,8 +198,9 @@ export default {
             },
           ],
         }));
-      },
-      (err) => {
+      }).catch((err) => {
+        handleException(baseOption, myChart);
+        myChart.setOption(getResizeOption());
       });
     }
 

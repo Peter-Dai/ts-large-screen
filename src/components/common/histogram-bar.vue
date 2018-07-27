@@ -24,7 +24,7 @@ export default {
     },
   },
   mounted() {
-    let { isPromissFn } = helper;
+    let { isPromissFn, handleException } = helper;
     let currentElem = this.$refs.histogramBar;
     let { getSources, title } = Object.assign(
       {},
@@ -186,8 +186,8 @@ export default {
             },
           ],
         }));
-      },
-      (err) => {
+      }).catch((err) => {
+        handleException(baseOption, myChart);
       });
     }
 
