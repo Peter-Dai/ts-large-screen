@@ -3,13 +3,13 @@
     class="month-container">
     <el-header
       class="month-header"
-      height="auto"
+      height="5%"
     >
       最近30天实时数据
     </el-header>
     <el-header
       class="month-header top-radius"
-      height="auto"
+      height="20%"
       style="text-align:left;">
       <el-row
         :gutter="24"
@@ -136,7 +136,8 @@ export default {
 .title {
   font-family: 'Arial, Verdana, sans-serif';
   font-weight: 800;
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
+  height: 50%;
 }
 
 .content {
