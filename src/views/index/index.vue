@@ -47,7 +47,7 @@ export default {
 
 .left-aside {
   background: linear-gradient(to right, #070925, #061542);
-  padding: 0.5rem;
+  padding: 0.8rem;
 }
 
 .main {
@@ -56,7 +56,7 @@ export default {
 
 .right-aside {
   background: linear-gradient(to right, #061542, #070925);
-  padding: 0.5rem;
+  padding: 0.8rem;
 }
 
 
